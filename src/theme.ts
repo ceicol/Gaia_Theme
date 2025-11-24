@@ -3,16 +3,18 @@ import { brandColors } from './tokens/colors';
 import { typography } from './tokens/typography';
 import { customShadows } from './tokens/shadows';
 import { borderRadius, spacingConstants } from './tokens/layout';
-import { animations, transitionStyles } from './tokens/animations';
+import { transitionStyles } from './tokens/animations';
 
 // --- 1. TYPESCRIPT AUGMENTATION (Necesario para IntelliSense) ---
 declare module '@mui/material/styles' {
   // Agregamos 'tertiary' a la paleta
   interface Palette {
     tertiary: Palette['primary'];
+    cta: Palette['primary'];
   }
   interface PaletteOptions {
     tertiary?: PaletteOptions['primary'];
+    cta?: PaletteOptions['primary'];
   }
   
   // Agregamos tus variables de borde y animaciones al objeto Theme
@@ -34,23 +36,21 @@ let theme = createTheme({
   palette: {
     primary: { main: brandColors.amazonia.main, light: brandColors.amazonia.light },
     secondary: { main: brandColors.panamazonia.main },
-    tertiary: { main: brandColors.jaguares.main }, // Ahora TS lo permite
+    tertiary: { main: brandColors.jaguares.main }, 
+    cta: { main: brandColors.gold.main },
     text: {
-      primary: brandColors.neutral.textDark,
-      secondary: brandColors.neutral.textLight,
+      primary: brandColors.text.dark,
+      secondary: brandColors.text.light,
     },
     background: {
-      default: brandColors.neutral.bgDefault,
-      paper: brandColors.neutral.bgPaper,
+      default: brandColors.background.main,
+      paper: brandColors.background.glass,
+      
     },
   },
   typography: typography as any,
   shadows: Array(25).fill('none').map((_, i) => customShadows[i] || 'none') as any,
-  
-  // Configuración de bordes base de MUI
-  shape: {
-    borderRadius: borderRadius.md, // Por defecto 12px
-  },
+
 
   // Inyectamos nuestros tokens customizados para acceso rápido
   customShape: borderRadius,
@@ -64,14 +64,6 @@ let theme = createTheme({
           borderRadius: borderRadius.md, // 12px
           transition: transitionStyles.bounce, // Tu animación con rebote
           padding: `${spacingConstants.min}px ${spacingConstants.md}px`, // 8px 24px
-        },
-      },
-    },
-    // Ejemplo: Tarjetas con el borde grande
-    MuiCard: {
-      styleOverrides: {
-        root: {
-          borderRadius: borderRadius.lg, // 24px
         },
       },
     },

@@ -1,10 +1,10 @@
-import { TypographyStyleOptions } from '@mui/material/styles/createTypography';
+import { TypographyVariantsOptions } from "@mui/material/styles";
 
 // Definimos las fuentes constantes para evitar errores de dedo
 const FONT_HEADER = "'Barlow Condensed', sans-serif";
 const FONT_BODY = "'Raleway', sans-serif";
 
-export const typography: TypographyStyleOptions = {
+export const typography: TypographyVariantsOptions = {
   fontFamily: FONT_BODY, // Fuente por defecto para todo
   h1: {
     fontFamily: FONT_HEADER,

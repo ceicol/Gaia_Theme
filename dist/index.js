@@ -36,33 +36,50 @@ var import_styles = require("@mui/material/styles");
 // src/tokens/colors.ts
 var brandColors = {
   amazonia: {
-    main: "#2E5C55",
+    main: "#314B46",
     // Reemplazar con hex real de "Escala-Amazonia"
-    light: "#5C8A82",
+    light: "#89CFB8",
     // "Escala-Amazonia-light"
-    glass: "rgba(46, 92, 85, 0.5)"
+    glass: "rgba(49, 75, 70, 0.6)"
   },
   panamazonia: {
-    main: "#7C8A45",
+    main: "#798842",
     // "Escala-Panamazonia"
-    light: "#A4B568"
+    light: "#BED182",
+    glass: "rgba(121, 136, 66, 0.6)"
   },
   jaguares: {
-    main: "#3A7CA5",
+    main: "#44937A",
     // "Escala-Macroterritorio-jaguares"
-    light: "#6FB1D9"
+    light: "#89CFB8",
+    glass: "rgba(68, 147, 122, 0.6)"
   },
   gold: {
-    main: "#D4AF37"
-    // "subtitulos" (parece dorado/ocre)
+    main: "#CE8D2A",
+    // "Cta" 
+    light: "#F1C788"
   },
-  neutral: {
-    bgDefault: "#FFFFFF",
+  green: {
+    main: "#4D8748",
+    light: "#6EB468",
+    glass: "#A4D38E",
+    button: "#357761"
+  },
+  blue: {
+    main: "#005bb0"
+    // links
+  },
+  text: {
+    dark: "#392E29",
+    light: "#FCF8F0"
+  },
+  background: {
+    main: "#F8F5EE",
     // Background-solid
-    bgPaper: "#F5F5F5",
+    ligth: "#F8F7F5",
     // Background-solid-ligth
-    textDark: "#333333",
-    textLight: "#FAFAFA"
+    glass: "rgba(248, 245, 238, 0.6)"
+    // Background-glass
   }
 };
 
@@ -159,25 +176,23 @@ var typography = {
 
 // src/tokens/shadows.ts
 var glassEffect = {
-  background: "rgba(255, 255, 255, 0.2)",
-  backdropFilter: "blur(10px)",
-  border: "1px solid rgba(255, 255, 255, 0.3)",
-  boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)"
+  background: "rgba(248, 245, 238, 0.6)",
+  backdropFilter: "blur(12px)",
+  border: "1px solid rgba(255, 245, 238, 0.7)"
 };
 var customShadows = [
   "none",
-  "0px 2px 4px rgba(0,0,0,0.1)",
+  "0px 8px 9px 0px rgba(0, 0, 0, 0.25)",
   // sombra-sm
   "none",
   "none",
-  "0px 4px 8px rgba(0,0,0,0.15)",
+  "0px 12px 12px 0px rgba(0, 0, 0, 0.25)",
   // sombra-md
   "none",
   "none",
   "none",
-  "0px 8px 16px rgba(0,0,0,0.2)"
+  "0px 18px 18px 0px rgba(0, 0, 0, 0.25)"
   // sombra-lg
-  // ... rellenar el resto con valores por defecto si es necesario
 ];
 
 // src/tokens/layout.ts
@@ -235,23 +250,18 @@ var theme = (0, import_styles.createTheme)({
     primary: { main: brandColors.amazonia.main, light: brandColors.amazonia.light },
     secondary: { main: brandColors.panamazonia.main },
     tertiary: { main: brandColors.jaguares.main },
-    // Ahora TS lo permite
+    cta: { main: brandColors.gold.main },
     text: {
-      primary: brandColors.neutral.textDark,
-      secondary: brandColors.neutral.textLight
+      primary: brandColors.text.dark,
+      secondary: brandColors.text.light
     },
     background: {
-      default: brandColors.neutral.bgDefault,
-      paper: brandColors.neutral.bgPaper
+      default: brandColors.background.main,
+      paper: brandColors.background.glass
     }
   },
   typography,
   shadows: Array(25).fill("none").map((_, i) => customShadows[i] || "none"),
-  // Configuración de bordes base de MUI
-  shape: {
-    borderRadius: borderRadius.md
-    // Por defecto 12px
-  },
   // Inyectamos nuestros tokens customizados para acceso rápido
   customShape: borderRadius,
   customSpacing: spacingConstants,
@@ -266,15 +276,6 @@ var theme = (0, import_styles.createTheme)({
           // Tu animación con rebote
           padding: `${spacingConstants.min}px ${spacingConstants.md}px`
           // 8px 24px
-        }
-      }
-    },
-    // Ejemplo: Tarjetas con el borde grande
-    MuiCard: {
-      styleOverrides: {
-        root: {
-          borderRadius: borderRadius.lg
-          // 24px
         }
       }
     }
