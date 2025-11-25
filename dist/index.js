@@ -224,7 +224,7 @@ var spacingConstants = {
 var animations = {
   // Tiempos
   duration: {
-    standard: 600,
+    standard: 500,
     complex: 800
     // Figma: 800ms
   },
