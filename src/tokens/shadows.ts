@@ -1,7 +1,7 @@
 // Helper para el efecto Glassmorphism
 export const glassEffect = {
   background: 'rgba(248, 245, 238, 0.6)',
-  backdropFilter: 'blur(12px)',
+  backdropFilter: 'blur(2px)',
   border: '1px solid rgba(255, 245, 238, 0.7)',
 };
 

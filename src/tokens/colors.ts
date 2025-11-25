@@ -1,5 +1,3 @@
-
-
 // Definimos los valores crudos (Hex) aquí
 export const brandColors = {
   amazonia: {
@@ -35,6 +33,13 @@ export const brandColors = {
 
 ,
 
+brown: {
+    main: '#392E29',
+    light: '#6B5B4D',
+    glass: '#B6A593',
+     
+  },
+
   text: {
     dark: '#392E29',
     light: '#FCF8F0',
@@ -42,7 +47,7 @@ export const brandColors = {
 
   background: {
     main: '#F8F5EE', // Background-solid
-    ligth: '#F8F7F5',   // Background-solid-ligth
-    glass: 'rgba(248, 245, 238, 0.6)', // Background-glass
+    light: '#F8F7F5',   // Background-solid-ligth
+
   }
 };

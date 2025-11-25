@@ -5,25 +5,42 @@ import { customShadows } from './tokens/shadows';
 import { borderRadius, spacingConstants } from './tokens/layout';
 import { transitionStyles } from './tokens/animations';
 
-// --- 1. TYPESCRIPT AUGMENTATION (Necesario para IntelliSense) ---
+// --- 1. TYPESCRIPT AUGMENTATION ---
+// Esto habilita el autocompletado mágico para "glass", "tertiary", etc.
 declare module '@mui/material/styles' {
-  // Agregamos 'tertiary' a la paleta
+  
+  // A. Permitimos propiedades extra dentro de cada color (ej: primary.glass)
+  interface PaletteColor {
+    glass?: string;
+    button?: string;
+  }
+  interface SimplePaletteColorOptions {
+    glass?: string;
+    button?: string;
+  }
+
+  // B. Definimos los nuevos colores en la Paleta Global
   interface Palette {
-    tertiary: Palette['primary'];
-    cta: Palette['primary'];
+    tertiary: PaletteColor;
+    cta: PaletteColor;
+    green: PaletteColor; // Para el 'green'
+    brown: PaletteColor;  // Para el 'brown'
+    link: PaletteColor;   // Para el 'blue'
   }
   interface PaletteOptions {
-    tertiary?: PaletteOptions['primary'];
-    cta?: PaletteOptions['primary'];
+    tertiary?: SimplePaletteColorOptions;
+    cta?: SimplePaletteColorOptions;
+    green?: SimplePaletteColorOptions;
+    brown?: SimplePaletteColorOptions;
+    link?: SimplePaletteColorOptions;
   }
-  
-  // Agregamos tus variables de borde y animaciones al objeto Theme
+
+  // C. Definimos variables globales del tema (Spacing, Shape, etc)
   interface Theme {
     customShape: typeof borderRadius;
     customSpacing: typeof spacingConstants;
     customTransitions: typeof transitionStyles;
   }
-  // Permitimos configurarlas en createTheme
   interface ThemeOptions {
     customShape?: typeof borderRadius;
     customSpacing?: typeof spacingConstants;
@@ -31,28 +48,75 @@ declare module '@mui/material/styles' {
   }
 }
 
+// Para que el Button acepte color="tertiary", "green", etc.
+declare module '@mui/material/Button' {
+  interface ButtonPropsColorOverrides {
+    tertiary: true;
+    cta: true;
+    green: true;
+    brown: true;
+    link: true;
+  }
+}
+
 // --- 2. CREACIÓN DEL TEMA ---
 let theme = createTheme({
   palette: {
-    primary: { main: brandColors.amazonia.main, light: brandColors.amazonia.light },
-    secondary: { main: brandColors.panamazonia.main },
-    tertiary: { main: brandColors.jaguares.main }, 
-    cta: { main: brandColors.gold.main },
+    // Colores Principales (Semánticos)
+    primary: { 
+      main: brandColors.amazonia.main, 
+      light: brandColors.amazonia.light,
+      glass: brandColors.amazonia.glass 
+    },
+    secondary: { 
+      main: brandColors.panamazonia.main,
+      light: brandColors.panamazonia.light,
+      glass: brandColors.panamazonia.glass
+    },
+    
+    // Colores Custom (Extendidos)
+    tertiary: { 
+      main: brandColors.jaguares.main,
+      light: brandColors.jaguares.light,
+      glass: brandColors.jaguares.glass
+    },
+
+    cta: { 
+      main: brandColors.gold.main,
+      light: brandColors.gold.light 
+    },
+
+    green: { // Mapeado desde 'green'
+      main: brandColors.green.main,
+      light: brandColors.green.light,
+      glass: brandColors.green.glass,
+      button: brandColors.green.button
+    },
+    brown: { // Mapeado desde 'brown'
+      main: brandColors.brown.main,
+      light: brandColors.brown.light,
+      glass: brandColors.brown.glass
+    },
+    link: { // Mapeado desde 'blue'
+      main: brandColors.blue.main 
+    },
+
+    // Textos y Fondos
     text: {
       primary: brandColors.text.dark,
-      secondary: brandColors.text.light,
+      secondary: brandColors.text.light, // Usado en fondos oscuros
     },
     background: {
-      default: brandColors.background.main,
-      paper: brandColors.background.glass,
-      
+      default: brandColors.background.main, 
+      paper: brandColors.background.light,  
     },
   },
+
   typography: typography as any,
+  
   shadows: Array(25).fill('none').map((_, i) => customShadows[i] || 'none') as any,
 
-
-  // Inyectamos nuestros tokens customizados para acceso rápido
+  // Tokens Custom
   customShape: borderRadius,
   customSpacing: spacingConstants,
   customTransitions: transitionStyles,
@@ -61,9 +125,9 @@ let theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: borderRadius.md, // 12px
-          transition: transitionStyles.bounce, // Tu animación con rebote
-          padding: `${spacingConstants.min}px ${spacingConstants.md}px`, // 8px 24px
+          borderRadius: borderRadius.md,
+          transition: transitionStyles.bounce,
+          padding: `${spacingConstants.min}px ${spacingConstants.md}px`,
         },
       },
     },
