@@ -11,6 +11,12 @@
       "require": "./dist/index.js"
     }
   },
+   "files": [
+    "dist",
+    "src/mui-types.ts",
+    "package.json",
+    "README.md"
+  ],
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts --clean",
     "prepare": "npm run build",
