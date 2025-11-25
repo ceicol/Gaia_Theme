@@ -1,4 +1,4 @@
-// Helper para el efecto Glassmorphism
+// Helper  efecto Glassmorphism
 export const glassEffect = {
   background: 'rgba(248, 245, 238, 0.6)',
   backdropFilter: 'blur(2px)',
