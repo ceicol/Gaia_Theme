@@ -14,7 +14,7 @@
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts --clean",
     "prepare": "npm run build",
-    "release": "git checkout build && git merge main && npm run build && git add dist && git commit -m \"chore: new release\" && git push origin build && git checkout main && echo '🚀 Publicado exitosamente!'"
+    "release": "git checkout build && git merge main --no-edit && npm run build && git add dist -f && (git diff-index --quiet HEAD || git commit -m \"chore: new release\") && git push origin build && git checkout main && echo '🚀 Publicado exitosamente!'"
   },
   "peerDependencies": {
     "react": ">=17",
