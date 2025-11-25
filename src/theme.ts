@@ -80,7 +80,7 @@ let theme = createTheme({
           padding: `${spacingConstants.min}px ${spacingConstants.md}px`,
           textTransform: 'none',
           fontWeight: 500,
-          fontSize: '1.5rem',
+          fontSize: '18px',
           fontFamily: "'Barlow Condensed', sans-serif",
         },
       },

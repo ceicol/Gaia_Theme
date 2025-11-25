@@ -7,7 +7,7 @@
     "strict": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "declaration": true,      // Importante: genera archivos .d.ts
+    "declaration": true,      
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     

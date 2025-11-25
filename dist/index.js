@@ -307,7 +307,7 @@ var theme = (0, import_styles2.createTheme)({
           padding: `${spacingConstants.min}px ${spacingConstants.md}px`,
           textTransform: "none",
           fontWeight: 500,
-          fontSize: "1.5rem",
+          fontSize: "18px",
           fontFamily: "'Barlow Condensed', sans-serif"
         }
       }
