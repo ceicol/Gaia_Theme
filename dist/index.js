@@ -87,95 +87,89 @@ var brandColors = {
   }
 };
 
+// src/utils/fluidTypography.ts
+var fluid = (maxPx, minPx) => {
+  const minSize = minPx || Math.round(maxPx * 0.7);
+  const minWidth = 375;
+  const maxWidth = 1440;
+  const root = 16;
+  const slope = (maxPx - minSize) / (maxWidth - minWidth);
+  const yAxisIntersection = -minWidth * slope + minSize;
+  const minRem = `${(minSize / root).toFixed(4)}rem`;
+  const maxRem = `${(maxPx / root).toFixed(4)}rem`;
+  const preferred = `${(yAxisIntersection / root).toFixed(4)}rem + ${(slope * 100).toFixed(4)}vw`;
+  return `clamp(${minRem}, ${preferred}, ${maxRem})`;
+};
+
 // src/tokens/typography.ts
 var FONT_HEADER = "'Barlow Condensed', sans-serif";
 var FONT_BODY = "'Raleway', sans-serif";
+var WEIGHTS = {
+  regular: 400,
+  medium: 500,
+  semibold: 600,
+  bold: 700
+};
+var header = (weight, size, lineHeight = 1.2) => ({
+  fontFamily: FONT_HEADER,
+  fontWeight: weight,
+  fontSize: fluid(size),
+  // Aplica clamp automático
+  lineHeight
+});
+var text = (weight, size, lineHeight) => ({
+  fontFamily: FONT_BODY,
+  fontWeight: weight,
+  fontSize: size > 16 ? fluid(size) : `${size}px`,
+  // Clamp solo si es > 16px, sino fijo
+  lineHeight: lineHeight || 1.5
+  // 1.5 es un buen "Auto" para lectura
+});
 var typography = {
   fontFamily: FONT_BODY,
-  // Fuente por defecto para todo
-  h1: {
-    fontFamily: FONT_HEADER,
-    fontWeight: 700,
-    fontSize: "4rem",
-    // Figma: titulo h1 xxl (64px)
-    lineHeight: 1.1
-  },
-  h2: {
-    fontFamily: FONT_HEADER,
-    fontWeight: 600,
-    fontSize: "3.25rem",
-    // Figma: titulo h1 xl (52px)
-    lineHeight: 1.2
-  },
-  h3: {
-    fontFamily: FONT_HEADER,
-    fontWeight: 600,
-    fontSize: "2.25rem"
-    // Figma: titulos h2 (36px)
-  },
-  h4: {
-    fontFamily: FONT_HEADER,
-    fontWeight: 500,
-    fontSize: "2rem"
-    // Figma: titulos h2 regular (32px)
-  },
-  h5: {
-    fontFamily: FONT_BODY,
-    // Figma: subtitulo (28px)
-    fontWeight: 600,
-    fontSize: "1.75rem"
-  },
-  h6: {
-    fontFamily: FONT_BODY,
-    fontWeight: 600,
-    fontSize: "1.5rem"
-  },
-  subtitle1: {
-    fontFamily: FONT_BODY,
-    fontWeight: 600,
-    fontSize: "1.125rem",
-    // Figma: subtitulo semibold
-    lineHeight: 1.5
-  },
-  subtitle2: {
-    fontFamily: FONT_BODY,
-    fontWeight: 500,
-    fontSize: "1rem"
-    // Variantes menores de subtítulos
-  },
-  body1: {
-    fontFamily: FONT_BODY,
-    fontSize: "1.5rem",
-    // Figma: texto grande (24px) - Usado para párrafos destacados
-    lineHeight: 1.5
-  },
-  body2: {
-    fontFamily: FONT_BODY,
-    fontSize: "1.125rem",
-    // Figma: texto mediano (18px) - El estándar de lectura
-    lineHeight: 1.6
-  },
-  caption: {
-    fontFamily: FONT_BODY,
-    fontSize: "1rem",
-    // Figma: text pequeño (16px)
-    lineHeight: 1.4
-  },
-  overline: {
-    fontFamily: FONT_BODY,
-    fontSize: "0.875rem",
-    // Figma: microcopy (14px)
-    textTransform: "uppercase",
-    letterSpacing: "0.08em",
-    fontWeight: 700
-  },
-  button: {
-    fontFamily: FONT_HEADER,
-    // Botones con Barlow suelen verse mejor
-    fontWeight: 600,
-    textTransform: "none"
-    // Evita que todo sea mayúscula por defecto
-  }
+  // ==========================================
+  // HEADERS (H1 - H3)
+  // ==========================================
+  // H1 Group
+  h1XxlBold: header(WEIGHTS.bold, 64, 1.1),
+  h1XlBold: header(WEIGHTS.bold, 52),
+  h1LgBold: header(WEIGHTS.bold, 40),
+  h1Bold: header(WEIGHTS.bold, 36),
+  // H2 Group (Aquí solucionamos tu problema de repetición)
+  // Misma función, diferente peso.
+  h2XxlSemibold: header(WEIGHTS.semibold, 32),
+  h2XxlMedium: header(WEIGHTS.medium, 32),
+  h2LgMedium: header(WEIGHTS.medium, 28),
+  h2Bold: header(WEIGHTS.bold, 28),
+  // H3 Group
+  h3XxlSemibold: header(WEIGHTS.semibold, 28),
+  h3XlRegular: header(WEIGHTS.regular, 24),
+  h3XlSemibold: header(WEIGHTS.semibold, 24),
+  h3XlMedium: header(WEIGHTS.medium, 24),
+  h3LgSemibold: header(WEIGHTS.semibold, 20, "26px"),
+  // Line-height específico
+  h3Medium: header(WEIGHTS.medium, 18),
+  // ==========================================
+  // BODY (Texts)
+  // ==========================================
+  // XXL Group (24px)
+  bodyXxlRegular: text(WEIGHTS.regular, 24),
+  bodyXxlRegularSpacing: text(WEIGHTS.regular, 24, "38.2px"),
+  // Line-height específico
+  bodyXxlSemiboldSpacing: text(WEIGHTS.semibold, 24, "38.2px"),
+  // XL Group (18px)
+  bodyXlBoldSpacing: text(WEIGHTS.bold, 18, "28.1px"),
+  bodyXlBold: text(WEIGHTS.bold, 18),
+  bodyXlMedium: text(WEIGHTS.medium, 18),
+  bodyXlMediumSpacing: text(WEIGHTS.medium, 18, "28.1px"),
+  bodyXlRegular: text(WEIGHTS.regular, 18),
+  // LG Group (16px)
+  bodyLgMedium: text(WEIGHTS.medium, 16),
+  bodyLgRegular: text(WEIGHTS.regular, 16),
+  // Regular/Base Group (14px)
+  bodyRegular: text(WEIGHTS.regular, 14),
+  bodyRegularSpacing: text(WEIGHTS.regular, 14, "20.4px"),
+  bodyMedium: text(WEIGHTS.medium, 14)
 };
 
 // src/tokens/shadows.ts
@@ -245,7 +239,7 @@ var transitionStyles = {
 // src/theme.ts
 var theme = (0, import_styles.createTheme)({
   palette: {
-    // Colores Principales (Semánticos)
+    // Semánticos
     primary: {
       main: brandColors.amazonia.main,
       light: brandColors.amazonia.light,
@@ -256,7 +250,7 @@ var theme = (0, import_styles.createTheme)({
       light: brandColors.panamazonia.light,
       glass: brandColors.panamazonia.glass
     },
-    // Colores Custom (Extendidos)
+    // Custom
     tertiary: {
       main: brandColors.jaguares.main,
       light: brandColors.jaguares.light,
@@ -267,36 +261,34 @@ var theme = (0, import_styles.createTheme)({
       light: brandColors.gold.light
     },
     green: {
-      // Mapeado desde 'green'
       main: brandColors.green.main,
       light: brandColors.green.light,
       glass: brandColors.green.glass,
       button: brandColors.green.button
     },
     brown: {
-      // Mapeado desde 'brown'
       main: brandColors.brown.main,
       light: brandColors.brown.light,
       glass: brandColors.brown.glass
     },
     link: {
-      // Mapeado desde 'blue'
       main: brandColors.blue.main
     },
-    // Textos y Fondos
+    // Bases
     text: {
       primary: brandColors.text.dark,
       secondary: brandColors.text.light
-      // Usado en fondos oscuros
     },
     background: {
       default: brandColors.background.main,
       paper: brandColors.background.light
     }
   },
+  // Importamos la tipografía generada (con clamp y helpers)
   typography,
+  // Sombras nativas de MUI (array)
   shadows: Array(25).fill("none").map((_, i) => customShadowsArray[i] || "none"),
-  // Tokens Custom
+  // Tokens Custom inyectados para acceso rápido via theme.token
   customShape: borderRadius,
   customSpacing: spacingConstants,
   customTransitions: transitionStyles,
@@ -308,6 +300,14 @@ var theme = (0, import_styles.createTheme)({
           borderRadius: borderRadius.md,
           transition: transitionStyles.bounce,
           padding: `${spacingConstants.min}px ${spacingConstants.md}px`
+        }
+      }
+    },
+    MuiCssBaseline: {
+      styleOverrides: {
+        // Aseguramos que el HTML/Body tome la fuente base
+        body: {
+          fontFamily: "'Raleway', sans-serif"
         }
       }
     }
