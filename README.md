@@ -1,11 +1,8 @@
-Aquí tienes el **README.md** definitivo. Está diseñado para ser la "Biblia" del desarrollador que use tu librería, listando todos los tokens disponibles para que no tengan que adivinar los nombres.
-
-Copia y pega esto en el archivo `README.md` de tu repositorio.
 
 ```markdown
 # Gaia UI Theme System
 
-Sistema de diseño centralizado para el ecosistema de aplicaciones Gaia. Construido sobre **Material UI v6+**, este paquete provee una integración "Plug & Play" con tokens de diseño, tipografía fluida, paletas de colores extendidas y utilidades de animación.
+Sistema de diseño centralizado para el ecosistema de aplicaciones Gaia. Construido sobre **Material UI v7+**, este paquete provee una integración "Plug & Play" con tokens de diseño, tipografía fluida, paletas de colores extendidas y utilidades de animación.
 
 ## 📋 Requisitos
 
@@ -14,22 +11,24 @@ Sistema de diseño centralizado para el ecosistema de aplicaciones Gaia. Constru
 - @emotion/react
 - @emotion/styled
 
-## 🚀 Instalación
+## 🚀 Instalación y Actualización
 
-### 1. Instalar el paquete
-Instala la librería directamente desde el repositorio:
+Este paquete se distribuye a través de Git y se consume desde la versión compilada (`dist`). Debido a cómo NPM gestiona la caché de dependencias Git, es importante usar el siguiente comando específico.
+
+### Instalar o Actualizar (Comando Recomendado)
+Para instalar el paquete por primera vez **o para traer los últimos cambios** (ignorando la caché local), ejecuta:
 
 ```bash
-# Vía HTTPS
-npm install git+https://github.com/Andrssnsdc/theme-Gaia.git
-
+npm install git+https://github.com/Andrssnsdc/theme-Gaia.git#build --force
 ```
 
-### 2. Instalar fuentes (Obligatorio)
-El sistema depende de **Raleway** y **Barlow Condensed**.
+> **Nota:** El flag `--force` es necesario para asegurar que NPM descargue la última versión del código compilado, ya que a veces NPM no detecta cambios en repositorios Git si la versión del `package.json` no ha cambiado.
+
+### Instalar dependencias Peer (Obligatorio)
+El sistema depende de las fuentes **Raleway** y **Barlow Condensed** y de las librerías base de MUI. Asegúrate de tenerlas:
 
 ```bash
-npm install @fontsource/raleway @fontsource/barlow-condensed
+npm install @mui/material @emotion/react @emotion/styled @fontsource/raleway @fontsource/barlow-condensed
 ```
 
 ---
@@ -210,4 +209,11 @@ import { transitionStyles } from 'theme-gaia';
   Botón con Rebote
 </Button>
 ```
+
+---
+
+## 🛠 Solución de Problemas
+
+**Los cambios no se reflejan:**
+Ejecuta de nuevo el comando de instalación con `--force` para limpiar la caché de Git en tu proyecto.
 ```
