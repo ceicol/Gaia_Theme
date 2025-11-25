@@ -70,6 +70,7 @@ let theme = createTheme({
   customSpacing: spacingConstants,
   customTransitions: transitionStyles,
   effectShadows: shadows,
+  
 
   components: {
     MuiButton: {
