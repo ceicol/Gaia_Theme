@@ -3,7 +3,7 @@ import '@mui/material/Typography';
 import '@mui/material/Button';
 import React from 'react';
 
-// Importamos los objetos reales para obtener sus tipos automáticamente
+// Importamos los objetos reales para obtener sus tipos
 import { borderRadius, spacingConstants } from './tokens/layout';
 import { transitionStyles } from './tokens/animations';
 import { shadows } from './tokens/shadows';
