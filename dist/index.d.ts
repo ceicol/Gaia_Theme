@@ -5,7 +5,7 @@ declare const glassEffect: {
     backdropFilter: string;
     border: string;
 };
-declare const semanticShadows: {
+declare const shadows: {
     sm: string;
     md: string;
     lg: string;
@@ -69,13 +69,13 @@ declare module '@mui/material/styles' {
         customShape: typeof borderRadius;
         customSpacing: typeof spacingConstants;
         customTransitions: typeof transitionStyles;
-        effectShadows: typeof semanticShadows;
+        effectShadows: typeof shadows;
     }
     interface ThemeOptions {
         customShape?: typeof borderRadius;
         customSpacing?: typeof spacingConstants;
         customTransitions?: typeof transitionStyles;
-        effectShadows?: typeof semanticShadows;
+        effectShadows?: typeof shadows;
     }
 }
 declare module '@mui/material/Button' {
@@ -133,4 +133,4 @@ declare const brandColors: {
     };
 };
 
-export { theme as AppTheme, animations, borderRadius, brandColors, glassEffect, spacingConstants, transitionStyles };
+export { theme as AppTheme, animations, borderRadius, brandColors, glassEffect, shadows, spacingConstants, transitionStyles };

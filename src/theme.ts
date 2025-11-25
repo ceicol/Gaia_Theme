@@ -1,7 +1,7 @@
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 import { brandColors } from './tokens/colors';
 import { typography } from './tokens/typography';
-import { customShadowsArray, semanticShadows } from './tokens/shadows';
+import { customShadowsArray, shadows } from './tokens/shadows';
 import { borderRadius, spacingConstants } from './tokens/layout';
 import { transitionStyles } from './tokens/animations';
 
@@ -40,13 +40,13 @@ declare module '@mui/material/styles' {
     customShape: typeof borderRadius;
     customSpacing: typeof spacingConstants;
     customTransitions: typeof transitionStyles;
-    effectShadows: typeof semanticShadows; 
+    effectShadows: typeof shadows; 
   }
   interface ThemeOptions {
     customShape?: typeof borderRadius;
     customSpacing?: typeof spacingConstants;
     customTransitions?: typeof transitionStyles;
-    effectShadows?: typeof semanticShadows;
+    effectShadows?: typeof shadows;
   }
 }
 
@@ -122,7 +122,7 @@ let theme = createTheme({
   customShape: borderRadius,
   customSpacing: spacingConstants,
   customTransitions: transitionStyles,
-  effectShadows: semanticShadows,
+  effectShadows: shadows,
 
   components: {
     MuiButton: {

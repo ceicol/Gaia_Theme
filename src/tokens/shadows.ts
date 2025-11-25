@@ -18,7 +18,7 @@ export const customShadowsArray = [
 
 ];
 
-export const semanticShadows = {
+export const shadows = {
   sm: customShadowsArray[1],
   md: customShadowsArray[4],
   lg: customShadowsArray[8],

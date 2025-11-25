@@ -165,7 +165,7 @@ var customShadowsArray = [
   "0px 18px 18px 0px rgba(0, 0, 0, 0.25)"
   // [8] -> lg
 ];
-var semanticShadows = {
+var shadows = {
   sm: customShadowsArray[1],
   md: customShadowsArray[4],
   lg: customShadowsArray[8]
@@ -267,7 +267,7 @@ var theme = createTheme({
   customShape: borderRadius,
   customSpacing: spacingConstants,
   customTransitions: transitionStyles,
-  effectShadows: semanticShadows,
+  effectShadows: shadows,
   components: {
     MuiButton: {
       styleOverrides: {
@@ -288,6 +288,7 @@ export {
   borderRadius,
   brandColors,
   glassEffect,
+  shadows,
   spacingConstants,
   transitionStyles
 };
