@@ -1,3 +1,8 @@
+// src/mui-augmentation.ts
+import "@mui/material/styles";
+import "@mui/material/Typography";
+import "@mui/material/Button";
+
 // src/theme.ts
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 
@@ -266,7 +271,10 @@ var theme = createTheme({
         root: {
           borderRadius: borderRadius.md,
           transition: transitionStyles.bounce,
-          padding: `${spacingConstants.min}px ${spacingConstants.md}px`
+          padding: `${spacingConstants.min}px ${spacingConstants.md}px`,
+          textTransform: "none",
+          fontWeight: 500,
+          fontSize: "1.5rem"
         }
       }
     },

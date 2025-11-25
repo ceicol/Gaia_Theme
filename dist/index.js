@@ -31,8 +31,13 @@ __export(index_exports, {
 });
 module.exports = __toCommonJS(index_exports);
 
-// src/theme.ts
+// src/mui-augmentation.ts
 var import_styles = require("@mui/material/styles");
+var import_Typography = require("@mui/material/Typography");
+var import_Button = require("@mui/material/Button");
+
+// src/theme.ts
+var import_styles2 = require("@mui/material/styles");
 
 // src/tokens/colors.ts
 var brandColors = {
@@ -237,7 +242,7 @@ var transitionStyles = {
 };
 
 // src/theme.ts
-var theme = (0, import_styles.createTheme)({
+var theme = (0, import_styles2.createTheme)({
   palette: {
     // Semánticos
     primary: {
@@ -299,7 +304,10 @@ var theme = (0, import_styles.createTheme)({
         root: {
           borderRadius: borderRadius.md,
           transition: transitionStyles.bounce,
-          padding: `${spacingConstants.min}px ${spacingConstants.md}px`
+          padding: `${spacingConstants.min}px ${spacingConstants.md}px`,
+          textTransform: "none",
+          fontWeight: 500,
+          fontSize: "1.5rem"
         }
       }
     },
@@ -313,7 +321,7 @@ var theme = (0, import_styles.createTheme)({
     }
   }
 });
-theme = (0, import_styles.responsiveFontSizes)(theme);
+theme = (0, import_styles2.responsiveFontSizes)(theme);
 var theme_default = theme;
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {

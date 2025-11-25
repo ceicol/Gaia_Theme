@@ -1,15 +1,5 @@
+import React from 'react';
 import * as _mui_material_styles from '@mui/material/styles';
-
-declare const glassEffect: {
-    background: string;
-    backdropFilter: string;
-    border: string;
-};
-declare const shadows: {
-    sm: string;
-    md: string;
-    lg: string;
-};
 
 declare const borderRadius: {
     sm: string;
@@ -40,6 +30,17 @@ declare const animations: {
 declare const transitionStyles: {
     smooth: string;
     bounce: string;
+};
+
+declare const glassEffect: {
+    background: string;
+    backdropFilter: string;
+    border: string;
+};
+declare const shadows: {
+    sm: string;
+    md: string;
+    lg: string;
 };
 
 declare module '@mui/material/styles' {
@@ -176,6 +177,7 @@ declare module '@mui/material/Button' {
         link: true;
     }
 }
+
 declare let theme: _mui_material_styles.Theme;
 
 declare const brandColors: {

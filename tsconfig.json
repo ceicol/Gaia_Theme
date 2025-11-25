@@ -7,14 +7,16 @@
     "strict": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "declaration": true,
+    "declaration": true,      // Importante: genera archivos .d.ts
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    
+    // TS entienda las rutas relativas
+    "baseUrl": "."
   },
   "include": [
-    "src", 
-    "src/theme", 
-    "**/*.d.ts"
+    "src/**/*"  
+  
   ],
   "exclude": ["node_modules", "dist"]
 }
