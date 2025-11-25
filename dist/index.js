@@ -69,6 +69,11 @@ var brandColors = {
     main: "#005bb0"
     // links
   },
+  brown: {
+    main: "#392E29",
+    light: "#6B5B4D",
+    glass: "#B6A593"
+  },
   text: {
     dark: "#392E29",
     light: "#FCF8F0"
@@ -76,10 +81,8 @@ var brandColors = {
   background: {
     main: "#F8F5EE",
     // Background-solid
-    ligth: "#F8F7F5",
+    light: "#F8F7F5"
     // Background-solid-ligth
-    glass: "rgba(248, 245, 238, 0.6)"
-    // Background-glass
   }
 };
 
@@ -177,7 +180,7 @@ var typography = {
 // src/tokens/shadows.ts
 var glassEffect = {
   background: "rgba(248, 245, 238, 0.6)",
-  backdropFilter: "blur(12px)",
+  backdropFilter: "blur(2px)",
   border: "1px solid rgba(255, 245, 238, 0.7)"
 };
 var customShadows = [
@@ -247,22 +250,58 @@ var transitionStyles = {
 // src/theme.ts
 var theme = (0, import_styles.createTheme)({
   palette: {
-    primary: { main: brandColors.amazonia.main, light: brandColors.amazonia.light },
-    secondary: { main: brandColors.panamazonia.main },
-    tertiary: { main: brandColors.jaguares.main },
-    cta: { main: brandColors.gold.main },
+    // Colores Principales (Semánticos)
+    primary: {
+      main: brandColors.amazonia.main,
+      light: brandColors.amazonia.light,
+      glass: brandColors.amazonia.glass
+    },
+    secondary: {
+      main: brandColors.panamazonia.main,
+      light: brandColors.panamazonia.light,
+      glass: brandColors.panamazonia.glass
+    },
+    // Colores Custom (Extendidos)
+    tertiary: {
+      main: brandColors.jaguares.main,
+      light: brandColors.jaguares.light,
+      glass: brandColors.jaguares.glass
+    },
+    cta: {
+      main: brandColors.gold.main,
+      light: brandColors.gold.light
+    },
+    green: {
+      // Mapeado desde 'green'
+      main: brandColors.green.main,
+      light: brandColors.green.light,
+      glass: brandColors.green.glass,
+      button: brandColors.green.button
+    },
+    brown: {
+      // Mapeado desde 'brown'
+      main: brandColors.brown.main,
+      light: brandColors.brown.light,
+      glass: brandColors.brown.glass
+    },
+    link: {
+      // Mapeado desde 'blue'
+      main: brandColors.blue.main
+    },
+    // Textos y Fondos
     text: {
       primary: brandColors.text.dark,
       secondary: brandColors.text.light
+      // Usado en fondos oscuros
     },
     background: {
       default: brandColors.background.main,
-      paper: brandColors.background.glass
+      paper: brandColors.background.light
     }
   },
   typography,
   shadows: Array(25).fill("none").map((_, i) => customShadows[i] || "none"),
-  // Inyectamos nuestros tokens customizados para acceso rápido
+  // Tokens Custom
   customShape: borderRadius,
   customSpacing: spacingConstants,
   customTransitions: transitionStyles,
@@ -271,11 +310,8 @@ var theme = (0, import_styles.createTheme)({
       styleOverrides: {
         root: {
           borderRadius: borderRadius.md,
-          // 12px
           transition: transitionStyles.bounce,
-          // Tu animación con rebote
           padding: `${spacingConstants.min}px ${spacingConstants.md}px`
-          // 8px 24px
         }
       }
     }
