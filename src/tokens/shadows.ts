@@ -7,12 +7,19 @@ export const glassEffect = {
 
 
 // sm -> shadows[1], md -> shadows[4], lg -> shadows[8]
-export const customShadows = [
+export const customShadowsArray = [
   "none", 
-  "0px 8px 9px 0px rgba(0, 0, 0, 0.25)", // sombra-sm
+  "0px 8px 9px 0px rgba(0, 0, 0, 0.25)", // [1] -> sm
   "none", "none",
-  "0px 12px 12px 0px rgba(0, 0, 0, 0.25)", // sombra-md
+  "0px 12px 12px 0px rgba(0, 0, 0, 0.25)", // [4] -> md
   "none", "none", "none",
-  "0px 18px 18px 0px rgba(0, 0, 0, 0.25)", // sombra-lg
-  
+  "0px 18px 18px 0px rgba(0, 0, 0, 0.25)", // [8] -> lg
+ 
+
 ];
+
+export const semanticShadows = {
+  sm: customShadowsArray[1],
+  md: customShadowsArray[4],
+  lg: customShadowsArray[8],
+};

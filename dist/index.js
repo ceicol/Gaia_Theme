@@ -183,47 +183,41 @@ var glassEffect = {
   backdropFilter: "blur(2px)",
   border: "1px solid rgba(255, 245, 238, 0.7)"
 };
-var customShadows = [
+var customShadowsArray = [
   "none",
   "0px 8px 9px 0px rgba(0, 0, 0, 0.25)",
-  // sombra-sm
+  // [1] -> sm
   "none",
   "none",
   "0px 12px 12px 0px rgba(0, 0, 0, 0.25)",
-  // sombra-md
+  // [4] -> md
   "none",
   "none",
   "none",
   "0px 18px 18px 0px rgba(0, 0, 0, 0.25)"
-  // sombra-lg
+  // [8] -> lg
 ];
+var semanticShadows = {
+  sm: customShadowsArray[1],
+  md: customShadowsArray[4],
+  lg: customShadowsArray[8]
+};
 
 // src/tokens/layout.ts
 var borderRadius = {
-  sm: 6,
-  // Figma: border-radius sm
-  md: 12,
-  // Figma: border-radius md (default)
-  lg: 24,
-  // Figma: border-radius lg
-  pill: 9999
-  // Figma: border-radius full
+  sm: "6px",
+  md: "12px",
+  lg: "24px",
+  pill: "9999px"
 };
 var spacingConstants = {
-  min: 8,
-  // spacing-minimum
-  sm: 12,
-  // spacing-default
-  base: 16,
-  // spacing-xs (Figma tiene naming confuso, 16 es base usual)
-  md: 24,
-  // spacing-sm 2
-  lg: 48,
-  // spacing-md
-  xl: 96,
-  // spacing-lg
-  xxl: 198
-  // spacing-xl
+  min: "8px",
+  sm: "12px",
+  base: "16px",
+  md: "24px",
+  lg: "48px",
+  xl: "96px",
+  xxl: "198px"
 };
 
 // src/tokens/animations.ts
@@ -300,11 +294,12 @@ var theme = (0, import_styles.createTheme)({
     }
   },
   typography,
-  shadows: Array(25).fill("none").map((_, i) => customShadows[i] || "none"),
+  shadows: Array(25).fill("none").map((_, i) => customShadowsArray[i] || "none"),
   // Tokens Custom
   customShape: borderRadius,
   customSpacing: spacingConstants,
   customTransitions: transitionStyles,
+  effectShadows: semanticShadows,
   components: {
     MuiButton: {
       styleOverrides: {
