@@ -6,7 +6,7 @@ export const glassEffect = {
 };
 
 
-// sm -> shadows[1], md -> shadows[4], lg -> shadows[8]
+// sm -> shadows[1], md -> shadows[4], }lg -> shadows[8]
 export const customShadowsArray = [
   "none", 
   "0px 8px 9px 0px rgba(0, 0, 0, 0.25)", // [1] -> sm
