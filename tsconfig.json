@@ -11,6 +11,10 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src"],
+  "include": [
+    "src", 
+    "src/theme", 
+    "**/*.d.ts"
+  ],
   "exclude": ["node_modules", "dist"]
 }
