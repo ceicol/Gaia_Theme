@@ -1,17 +1,33 @@
-// src/mui-augmentation.d.ts
+// src/types.d.ts
 import '@mui/material/styles';
 import '@mui/material/Typography';
 import '@mui/material/Button';
-import { borderRadius, spacingConstants } from './tokens/layout';
-import { transitionStyles } from './tokens/animations';
-import { shadows } from './tokens/shadows';
+import React from 'react';
 
-// Es vital importar React para que CSSProperties funcione
-import React from 'react'; 
 
+
+
+interface CustomShape {
+  sm: string; md: string; lg: string; pill: string;
+}
+interface CustomSpacing {
+  min: string; sm: string; base: string; md: string; lg: string; xl: string; xxl: string;
+}
+interface CustomAnimations {
+  duration: { standard: number; complex: number };
+  easing: { smart: string; backOut: string };
+}
+interface CustomTransitions {
+  smooth: string; bounce: string;
+}
+interface CustomShadows {
+  sm: string; md: string; lg: string;
+}
+
+// 2. AUGMENTATION
 declare module '@mui/material/styles' {
   
-  // --- A. COLORES EXTENDIDOS ---
+  // Colores
   interface PaletteColor {
     glass?: string;
     button?: string;
@@ -36,21 +52,21 @@ declare module '@mui/material/styles' {
     link?: SimplePaletteColorOptions;
   }
 
-  // --- B. VARIABLES GLOBALES DEL TEMA ---
+  // Variables Globales
   interface Theme {
-    customShape: typeof borderRadius;
-    customSpacing: typeof spacingConstants;
-    customTransitions: typeof transitionStyles;
-    effectShadows: typeof shadows; 
+    customShape: CustomShape;
+    customSpacing: CustomSpacing;
+    customTransitions: CustomTransitions;
+    effectShadows: CustomShadows; 
   }
   interface ThemeOptions {
-    customShape?: typeof borderRadius;
-    customSpacing?: typeof spacingConstants;
-    customTransitions?: typeof transitionStyles;
-    effectShadows?: typeof shadows;
+    customShape?: CustomShape;
+    customSpacing?: CustomSpacing;
+    customTransitions?: CustomTransitions;
+    effectShadows?: CustomShadows;
   }
 
-  // --- C. TIPOGRAFÍA CUSTOM ---
+  // Tipografía
   interface TypographyVariants {
     h1XxlBold: React.CSSProperties;
     h1XlBold: React.CSSProperties;
@@ -112,7 +128,6 @@ declare module '@mui/material/styles' {
   }
 }
 
-// --- D. OVERRIDES EN COMPONENTES ---
 declare module '@mui/material/Typography' {
   interface TypographyPropsVariantOverrides {
     h1XxlBold: true;
