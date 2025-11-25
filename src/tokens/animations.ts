@@ -1,7 +1,7 @@
 export const animations = {
   // Tiempos
   duration: {
-    standard: 300,
+    standard: 600,
     complex: 800, // Figma: 800ms
   },
   // Curvas de aceleración
