@@ -1,6 +1,6 @@
 {
   "name": "theme-gaia",
-  "version": "1.0.1", 
+  "version": "1.0.2", 
   "main": "./dist/index.js",     
   "module": "./dist/index.mjs",  
   "types": "./dist/index.d.ts",  
@@ -12,9 +12,8 @@
     }
   },
   "scripts": {
-   "build": "tsup src/index.ts --format cjs,esm --dts --clean && cp src/types.d.ts dist/types.d.ts",
-  "prepare": "npm run build"
-
+    "build": "tsup src/index.ts --format cjs,esm --dts --clean",
+    "prepare": "npm run build"
   },
   "peerDependencies": {
     "react": ">=17",

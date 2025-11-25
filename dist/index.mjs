@@ -1,3 +1,8 @@
+// src/mui-types.ts
+import "@mui/material/styles";
+import "@mui/material/Typography";
+import "@mui/material/Button";
+
 // src/theme.ts
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 

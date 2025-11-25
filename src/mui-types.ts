@@ -1,33 +1,18 @@
-// src/types.d.ts
 import '@mui/material/styles';
 import '@mui/material/Typography';
 import '@mui/material/Button';
 import React from 'react';
 
+// Importamos los objetos reales para obtener sus tipos automáticamente
+import { borderRadius, spacingConstants } from './tokens/layout';
+import { transitionStyles } from './tokens/animations';
+import { shadows } from './tokens/shadows';
 
+// --- DEFINICIÓN DE TIPOS ---
 
-
-interface CustomShape {
-  sm: string; md: string; lg: string; pill: string;
-}
-interface CustomSpacing {
-  min: string; sm: string; base: string; md: string; lg: string; xl: string; xxl: string;
-}
-interface CustomAnimations {
-  duration: { standard: number; complex: number };
-  easing: { smart: string; backOut: string };
-}
-interface CustomTransitions {
-  smooth: string; bounce: string;
-}
-interface CustomShadows {
-  sm: string; md: string; lg: string;
-}
-
-// 2. AUGMENTATION
 declare module '@mui/material/styles' {
   
-  // Colores
+  // 1. COLORES
   interface PaletteColor {
     glass?: string;
     button?: string;
@@ -36,7 +21,6 @@ declare module '@mui/material/styles' {
     glass?: string;
     button?: string;
   }
-
   interface Palette {
     tertiary: PaletteColor;
     cta: PaletteColor;
@@ -52,21 +36,21 @@ declare module '@mui/material/styles' {
     link?: SimplePaletteColorOptions;
   }
 
-  // Variables Globales
+  // 2. VARIABLES GLOBALES
   interface Theme {
-    customShape: CustomShape;
-    customSpacing: CustomSpacing;
-    customTransitions: CustomTransitions;
-    effectShadows: CustomShadows; 
+    customShape: typeof borderRadius;
+    customSpacing: typeof spacingConstants;
+    customTransitions: typeof transitionStyles;
+    effectShadows: typeof shadows; 
   }
   interface ThemeOptions {
-    customShape?: CustomShape;
-    customSpacing?: CustomSpacing;
-    customTransitions?: CustomTransitions;
-    effectShadows?: CustomShadows;
+    customShape?: typeof borderRadius;
+    customSpacing?: typeof spacingConstants;
+    customTransitions?: typeof transitionStyles;
+    effectShadows?: typeof shadows;
   }
 
-  // Tipografía
+  // 3. TIPOGRAFÍA (Todas tus variantes)
   interface TypographyVariants {
     h1XxlBold: React.CSSProperties;
     h1XlBold: React.CSSProperties;
@@ -128,6 +112,7 @@ declare module '@mui/material/styles' {
   }
 }
 
+// 4. COMPONENTES
 declare module '@mui/material/Typography' {
   interface TypographyPropsVariantOverrides {
     h1XxlBold: true;
@@ -169,3 +154,6 @@ declare module '@mui/material/Button' {
     link: true;
   }
 }
+
+
+export {};

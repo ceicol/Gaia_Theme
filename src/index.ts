@@ -1,4 +1,4 @@
-/// <reference path="./types.d.ts" />
+import './mui-types'; 
 
 export { default as AppTheme } from './theme';
 export { brandColors } from './tokens/colors';
