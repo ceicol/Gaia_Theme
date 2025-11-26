@@ -41,28 +41,23 @@ var import_styles2 = require("@mui/material/styles");
 
 // src/tokens/colors.ts
 var brandColors = {
-  amazonia: {
+  tertiary: {
     main: "#314B46",
-    // Reemplazar con hex real de "Escala-Amazonia"
     light: "#89CFB8",
-    // "Escala-Amazonia-light"
     glass: "rgba(49, 75, 70, 0.6)"
   },
-  panamazonia: {
+  secondary: {
     main: "#798842",
-    // "Escala-Panamazonia"
     light: "#BED182",
     glass: "rgba(121, 136, 66, 0.6)"
   },
-  jaguares: {
+  primary: {
     main: "#44937A",
-    // "Escala-Macroterritorio-jaguares"
     light: "#89CFB8",
     glass: "rgba(68, 147, 122, 0.6)"
   },
-  gold: {
+  cta: {
     main: "#CE8D2A",
-    // "Cta" 
     light: "#F1C788"
   },
   green: {
@@ -86,9 +81,7 @@ var brandColors = {
   },
   background: {
     main: "#F8F5EE",
-    // Background-solid
     light: "#F8F7F5"
-    // Background-solid-ligth
   }
 };
 
@@ -136,41 +129,41 @@ var typography = {
   // HEADERS (H1 - H3)
   // ==========================================
   // H1 Group
-  h1XxlBold: header(WEIGHTS.bold, 64, 1.1),
-  h1XlBold: header(WEIGHTS.bold, 52),
-  h1LgBold: header(WEIGHTS.bold, 40),
+  h1xxlBold: header(WEIGHTS.bold, 64, 1.1),
+  h1xlBold: header(WEIGHTS.bold, 52),
+  h1lgBold: header(WEIGHTS.bold, 40),
   h1Bold: header(WEIGHTS.bold, 36),
   // H2 Group (Aquí solucionamos tu problema de repetición)
   // Misma función, diferente peso.
-  h2XxlSemibold: header(WEIGHTS.semibold, 32),
-  h2XxlMedium: header(WEIGHTS.medium, 32),
-  h2LgMedium: header(WEIGHTS.medium, 28),
+  h2xxlSemibold: header(WEIGHTS.semibold, 32),
+  h2xxlMedium: header(WEIGHTS.medium, 32),
+  h2lgMedium: header(WEIGHTS.medium, 28),
   h2Bold: header(WEIGHTS.bold, 28),
   // H3 Group
-  h3XxlSemibold: header(WEIGHTS.semibold, 28),
-  h3XlRegular: header(WEIGHTS.regular, 24),
-  h3XlSemibold: header(WEIGHTS.semibold, 24),
-  h3XlMedium: header(WEIGHTS.medium, 24),
-  h3LgSemibold: header(WEIGHTS.semibold, 20, "26px"),
+  h3xxlSemibold: header(WEIGHTS.semibold, 28),
+  h3xlRegular: header(WEIGHTS.regular, 24),
+  h3xlSemibold: header(WEIGHTS.semibold, 24),
+  h3xlMedium: header(WEIGHTS.medium, 24),
+  h3lgSemibold: header(WEIGHTS.semibold, 20, "26px"),
   // Line-height específico
   h3Medium: header(WEIGHTS.medium, 18),
   // ==========================================
   // BODY (Texts)
   // ==========================================
   // XXL Group (24px)
-  bodyXxlRegular: text(WEIGHTS.regular, 24),
-  bodyXxlRegularSpacing: text(WEIGHTS.regular, 24, "38.2px"),
+  bodyxxlRegular: text(WEIGHTS.regular, 24),
+  bodyxxlRegularSpacing: text(WEIGHTS.regular, 24, "38.2px"),
   // Line-height específico
-  bodyXxlSemiboldSpacing: text(WEIGHTS.semibold, 24, "38.2px"),
+  bodyxxlSemiboldSpacing: text(WEIGHTS.semibold, 24, "38.2px"),
   // XL Group (18px)
-  bodyXlBoldSpacing: text(WEIGHTS.bold, 18, "28.1px"),
-  bodyXlBold: text(WEIGHTS.bold, 18),
-  bodyXlMedium: text(WEIGHTS.medium, 18),
-  bodyXlMediumSpacing: text(WEIGHTS.medium, 18, "28.1px"),
-  bodyXlRegular: text(WEIGHTS.regular, 18),
+  bodyxlBoldSpacing: text(WEIGHTS.bold, 18, "28.1px"),
+  bodyxlBold: text(WEIGHTS.bold, 18),
+  bodyxlMedium: text(WEIGHTS.medium, 18),
+  bodyxlMediumSpacing: text(WEIGHTS.medium, 18, "28.1px"),
+  bodyxlRegular: text(WEIGHTS.regular, 18),
   // LG Group (16px)
-  bodyLgMedium: text(WEIGHTS.medium, 16),
-  bodyLgRegular: text(WEIGHTS.regular, 16),
+  bodylgMedium: text(WEIGHTS.medium, 16),
+  bodylgRegular: text(WEIGHTS.regular, 16),
   // Regular/Base Group (14px)
   bodyRegular: text(WEIGHTS.regular, 14),
   bodyRegularSpacing: text(WEIGHTS.regular, 14, "20.4px"),
@@ -246,24 +239,24 @@ var theme = (0, import_styles2.createTheme)({
   palette: {
     // Semánticos
     primary: {
-      main: brandColors.amazonia.main,
-      light: brandColors.amazonia.light,
-      glass: brandColors.amazonia.glass
+      main: brandColors.primary.main,
+      light: brandColors.primary.light,
+      glass: brandColors.primary.glass
     },
     secondary: {
-      main: brandColors.panamazonia.main,
-      light: brandColors.panamazonia.light,
-      glass: brandColors.panamazonia.glass
+      main: brandColors.secondary.main,
+      light: brandColors.secondary.light,
+      glass: brandColors.secondary.glass
     },
     // Custom
     tertiary: {
-      main: brandColors.jaguares.main,
-      light: brandColors.jaguares.light,
-      glass: brandColors.jaguares.glass
+      main: brandColors.tertiary.main,
+      light: brandColors.tertiary.light,
+      glass: brandColors.tertiary.glass
     },
     cta: {
-      main: brandColors.gold.main,
-      light: brandColors.gold.light
+      main: brandColors.cta.main,
+      light: brandColors.cta.light
     },
     green: {
       main: brandColors.green.main,
