@@ -235,7 +235,7 @@ var transitionStyles = {
 };
 
 // src/theme.ts
-var theme = (0, import_styles2.createTheme)({
+var themeOptions = {
   palette: {
     // Semánticos
     primary: {
@@ -314,7 +314,8 @@ var theme = (0, import_styles2.createTheme)({
       }
     }
   }
-});
+};
+var theme = (0, import_styles2.createTheme)(themeOptions);
 theme = (0, import_styles2.responsiveFontSizes)(theme);
 var theme_default = theme;
 // Annotate the CommonJS export names for ESM import in node:

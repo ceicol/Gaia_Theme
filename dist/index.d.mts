@@ -44,11 +44,11 @@ declare const shadows: {
 };
 
 declare module '@mui/material/styles' {
-    interface PaletteColor {
+    interface SimplePaletteColorOptions {
         glass?: string;
         button?: string;
     }
-    interface SimplePaletteColorOptions {
+    interface PaletteColor {
         glass?: string;
         button?: string;
     }

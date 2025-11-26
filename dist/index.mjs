@@ -202,7 +202,7 @@ var transitionStyles = {
 };
 
 // src/theme.ts
-var theme = createTheme({
+var themeOptions = {
   palette: {
     // Semánticos
     primary: {
@@ -281,7 +281,8 @@ var theme = createTheme({
       }
     }
   }
-});
+};
+var theme = createTheme(themeOptions);
 theme = responsiveFontSizes(theme);
 var theme_default = theme;
 export {
