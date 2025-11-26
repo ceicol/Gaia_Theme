@@ -263,7 +263,7 @@ var theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: borderRadius.md,
-          transition: transitionStyles.bounce,
+          transition: transitionStyles.smooth,
           padding: `${spacingConstants.min}px ${spacingConstants.md}px`,
           textTransform: "none",
           fontWeight: 500,

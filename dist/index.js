@@ -296,7 +296,7 @@ var theme = (0, import_styles2.createTheme)({
       styleOverrides: {
         root: {
           borderRadius: borderRadius.md,
-          transition: transitionStyles.bounce,
+          transition: transitionStyles.smooth,
           padding: `${spacingConstants.min}px ${spacingConstants.md}px`,
           textTransform: "none",
           fontWeight: 500,
