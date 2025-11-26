@@ -73,10 +73,10 @@ Los colores son accesibles vía `color="..."` en componentes o `palette.nombre` 
 
 | Nombre Semántico | Token Figma | Propiedades Extra |
 | :--- | :--- | :--- |
-| **`primary`** | Amazonia | `.main`, `.light`, `.glass` |
-| **`secondary`** | Panamazonia | `.main`, `.light`, `.glass` |
-| **`tertiary`** | Jaguares | `.main`, `.light`, `.glass` |
-| **`cta`** | Gold | `.main`, `.light` |
+| **`tertiary`** | tertiary | `.main`, `.light`, `.glass` |
+| **`secondary`** | secondary | `.main`, `.light`, `.glass` |
+| **`primary`** | primary | `.main`, `.light`, `.glass` |
+| **`cta`** | Cta | `.main`, `.light` |
 | **`green`** | Green | `.main`, `.light`, `.glass`, `.button` |
 | **`brown`** | Brown | `.main`, `.light`, `.glass` |
 | **`link`** | Blue | `.main` |
@@ -97,42 +97,42 @@ Fuente Títulos: **Barlow Condensed** | Fuente Cuerpo: **Raleway**.
 #### Títulos (Headers)
 | Variante | Descripción |
 | :--- | :--- |
-| `h1XxlBold` | 64px Bold |
-| `h1XlBold` | 52px Bold |
-| `h1LgBold` | 40px Bold |
+| `h1xxlBold` | 64px Bold |
+| `h1xlBold` | 52px Bold |
+| `h1lgBold` | 40px Bold |
 | `h1Bold` | 36px Bold |
-| `h2XxlSemibold` | 32px Semibold |
-| `h2XxlMedium` | 32px Medium |
-| `h2LgMedium` | 28px Medium |
+| `h2xxlSemibold` | 32px Semibold |
+| `h2xxlMedium` | 32px Medium |
+| `h2lgMedium` | 28px Medium |
 | `h2Bold` | 28px Bold |
-| `h3XxlSemibold` | 28px Semibold |
-| `h3XlRegular` | 24px Regular |
-| `h3XlSemibold` | 24px Semibold |
-| `h3XlMedium` | 24px Medium |
-| `h3LgSemibold` | 20px Semibold |
+| `h3xxlSemibold` | 28px Semibold |
+| `h3xlRegular` | 24px Regular |
+| `h3xlSemibold` | 24px Semibold |
+| `h3xlMedium` | 24px Medium |
+| `h3lgSemibold` | 20px Semibold |
 | `h3Medium` | 18px Medium |
 
 #### Cuerpo (Body)
 | Variante | Descripción |
 | :--- | :--- |
-| `bodyXxlRegular` | 24px Regular |
-| `bodyXxlRegularSpacing` | 24px Regular (+ LineHeight) |
-| `bodyXxlSemiboldSpacing`| 24px Semibold (+ LineHeight) |
-| `bodyXlBoldSpacing` | 18px Bold (+ LineHeight) |
-| `bodyXlBold` | 18px Bold |
-| `bodyXlMedium` | 18px Medium |
-| `bodyXlMediumSpacing` | 18px Medium (+ LineHeight) |
-| `bodyXlRegular` | 18px Regular |
-| `bodyLgMedium` | 16px Medium |
-| `bodyLgRegular` | 16px Regular |
+| `bodyxxlRegular` | 24px Regular |
+| `bodyxxlRegularSpacing` | 24px Regular (+ LineHeight) |
+| `bodyxxlSemiboldSpacing`| 24px Semibold (+ LineHeight) |
+| `bodyxlBoldSpacing` | 18px Bold (+ LineHeight) |
+| `bodyxlBold` | 18px Bold |
+| `bodyxlMedium` | 18px Medium |
+| `bodyxlMediumSpacing` | 18px Medium (+ LineHeight) |
+| `bodyxlRegular` | 18px Regular |
+| `bodylgMedium` | 16px Medium |
+| `bodylgRegular` | 16px Regular |
 | `bodyRegular` | 14px Regular |
 | `bodyRegularSpacing` | 14px Regular (+ Spacing) |
 | `bodyMedium` | 14px Medium |
 
 **Ejemplo de uso:**
 ```tsx
-<Typography variant="h1XxlBold">Título Principal</Typography>
-<Typography variant="bodyXxlRegularSpacing">Texto destacado</Typography>
+<Typography variant="h1xxlBold">Título Principal</Typography>
+<Typography variant="bodyxxlRegularSpacing">Texto destacado</Typography>
 ```
 
 ---

@@ -15,24 +15,24 @@ let theme = createTheme({
   palette: {
     // Semánticos
     primary: { 
-      main: brandColors.amazonia.main, 
-      light: brandColors.amazonia.light,
-      glass: brandColors.amazonia.glass 
+      main: brandColors.primary.main, 
+      light: brandColors.primary.light,
+      glass: brandColors.primary.glass 
     },
     secondary: { 
-      main: brandColors.panamazonia.main,
-      light: brandColors.panamazonia.light,
-      glass: brandColors.panamazonia.glass
+      main: brandColors.secondary.main,
+      light: brandColors.secondary.light,
+      glass: brandColors.secondary.glass
     },
     // Custom
     tertiary: { 
-      main: brandColors.jaguares.main,
-      light: brandColors.jaguares.light,
-      glass: brandColors.jaguares.glass
+      main: brandColors.tertiary.main,
+      light: brandColors.tertiary.light,
+      glass: brandColors.tertiary.glass
     },
     cta: { 
-      main: brandColors.gold.main,
-      light: brandColors.gold.light 
+      main: brandColors.cta.main,
+      light: brandColors.cta.light 
     },
     green: {
       main: brandColors.green.main,
