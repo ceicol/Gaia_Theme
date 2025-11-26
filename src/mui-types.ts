@@ -148,6 +148,15 @@ declare module '@mui/material/Typography' {
     bodyRegularSpacing: true;
     bodyMedium: true;
   }
+
+  interface TypographyPropsColorOverrides {
+    tertiary: true;
+    cta: true;
+    green: true;
+    brown: true;
+    link: true;
+    
+  }
 }
 
 declare module '@mui/material/Button' {
