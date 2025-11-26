@@ -11,16 +11,19 @@ import { shadows } from './tokens/shadows';
 // --- DEFINICIÓN DE TIPOS ---
 
 declare module '@mui/material/styles' {
+
+   interface SimplePaletteColorOptions {
+    glass?: string;
+    button?: string;
+  }
   
-  // 1. COLORES
+  // Esto permite usar theme.palette.primary.glass 
   interface PaletteColor {
     glass?: string;
     button?: string;
   }
-  interface SimplePaletteColorOptions {
-    glass?: string;
-    button?: string;
-  }
+
+  // 1. AGREGAR NUEVOS COLORES A LA PALETA
   interface Palette {
     tertiary: PaletteColor;
     cta: PaletteColor;
@@ -28,6 +31,7 @@ declare module '@mui/material/styles' {
     brown: PaletteColor;
     link: PaletteColor;
   }
+
   interface PaletteOptions {
     tertiary?: SimplePaletteColorOptions;
     cta?: SimplePaletteColorOptions;
@@ -43,6 +47,7 @@ declare module '@mui/material/styles' {
     customTransitions: typeof transitionStyles;
     effectShadows: typeof shadows; 
   }
+  
   interface ThemeOptions {
     customShape?: typeof borderRadius;
     customSpacing?: typeof spacingConstants;

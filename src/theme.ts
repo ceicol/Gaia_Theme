@@ -1,9 +1,11 @@
-import { createTheme, responsiveFontSizes, } from '@mui/material/styles';
+import './mui-types'; 
+import { createTheme, ThemeOptions, responsiveFontSizes, } from '@mui/material/styles';
 import { brandColors } from './tokens/colors';
 import { typography } from './tokens/typography';
 import { customShadowsArray, shadows } from './tokens/shadows';
 import { borderRadius, spacingConstants } from './tokens/layout';
 import { transitionStyles } from './tokens/animations';
+import { Shadows } from '@mui/material/styles';
 
 
 
@@ -11,7 +13,7 @@ import { transitionStyles } from './tokens/animations';
 //  CREACIÓN DEL TEMA
 // ==========================================================
 
-let theme = createTheme({
+const themeOptions: ThemeOptions = {
   palette: {
     // Semánticos
     primary: { 
@@ -60,10 +62,10 @@ let theme = createTheme({
   },
 
   // Importamos la tipografía generada (con clamp y helpers)
-  typography: typography as any,
+  typography: typography,
   
   // Sombras nativas de MUI (array)
-  shadows: Array(25).fill('none').map((_, i) => customShadowsArray[i] || 'none') as any,
+  shadows: Array(25).fill('none').map((_, i) => customShadowsArray[i] || 'none') as Shadows,
 
   // Tokens Custom inyectados para acceso rápido via theme.token
   customShape: borderRadius,
@@ -95,9 +97,11 @@ let theme = createTheme({
       }
     }
   },
-});
+};
 
 // Hacemos responsive solo las variantes estándar h1-h6 (las custom ya tienen fluid typography)
+let theme = createTheme(themeOptions);
+
 theme = responsiveFontSizes(theme);
 
 export default theme;
