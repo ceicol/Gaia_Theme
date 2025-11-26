@@ -1,22 +1,22 @@
-// Definimos los valores crudos (Hex) aquí
+// Definimos los valores crudos 
 export const brandColors = {
-  amazonia: {
-    main: '#314B46', // Reemplazar con hex real de "Escala-Amazonia"
-    light: '#89CFB8', // "Escala-Amazonia-light"
+  tertiary: {
+    main: '#314B46', 
+    light: '#89CFB8', 
     glass: 'rgba(49, 75, 70, 0.6)', 
   },
-  panamazonia: {
-    main: '#798842', // "Escala-Panamazonia"
+  secondary: {
+    main: '#798842', 
     light: '#BED182',
     glass: 'rgba(121, 136, 66, 0.6)',
   },
-  jaguares: {
-    main: '#44937A', // "Escala-Macroterritorio-jaguares"
+  primary: {
+    main: '#44937A', 
     light: '#89CFB8',
     glass: 'rgba(68, 147, 122, 0.6)',
   },
-  gold: {
-    main: '#CE8D2A', // "Cta" 
+  cta: {
+    main: '#CE8D2A',  
     light: '#F1C788',
   },
 
@@ -46,8 +46,8 @@ brown: {
   },
 
   background: {
-    main: '#F8F5EE', // Background-solid
-    light: '#F8F7F5',   // Background-solid-ligth
+    main: '#F8F5EE', 
+    light: '#F8F7F5',   
 
   }
 };

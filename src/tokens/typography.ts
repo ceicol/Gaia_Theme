@@ -52,26 +52,26 @@ export const typography: TypographyVariantsOptions = {
   // ==========================================
 
   // H1 Group
-  h1XxlBold: header(WEIGHTS.bold, 64, 1.1),
-  h1XlBold:  header(WEIGHTS.bold, 52),
-  h1LgBold:  header(WEIGHTS.bold, 40),
+  h1xxlBold: header(WEIGHTS.bold, 64, 1.1),
+  h1xlBold:  header(WEIGHTS.bold, 52),
+  h1lgBold:  header(WEIGHTS.bold, 40),
   h1Bold:    header(WEIGHTS.bold, 36),
 
   // H2 Group (Aquí solucionamos tu problema de repetición)
   // Misma función, diferente peso.
-  h2XxlSemibold: header(WEIGHTS.semibold, 32),
-  h2XxlMedium:    header(WEIGHTS.medium, 32), 
-  h2LgMedium:    header(WEIGHTS.medium, 28),
+  h2xxlSemibold: header(WEIGHTS.semibold, 32),
+  h2xxlMedium:    header(WEIGHTS.medium, 32), 
+  h2lgMedium:    header(WEIGHTS.medium, 28),
   h2Bold:        header(WEIGHTS.bold, 28),   
 
   // H3 Group
-  h3XxlSemibold: header(WEIGHTS.semibold, 28),
+  h3xxlSemibold: header(WEIGHTS.semibold, 28),
   
-  h3XlRegular:   header(WEIGHTS.regular, 24),
-  h3XlSemibold:  header(WEIGHTS.semibold, 24), 
-  h3XlMedium:    header(WEIGHTS.medium, 24),   
+  h3xlRegular:   header(WEIGHTS.regular, 24),
+  h3xlSemibold:  header(WEIGHTS.semibold, 24), 
+  h3xlMedium:    header(WEIGHTS.medium, 24),   
   
-  h3LgSemibold:  header(WEIGHTS.semibold, 20, '26px'), // Line-height específico
+  h3lgSemibold:  header(WEIGHTS.semibold, 20, '26px'), // Line-height específico
   h3Medium:      header(WEIGHTS.medium, 18),
 
   // ==========================================
@@ -79,20 +79,20 @@ export const typography: TypographyVariantsOptions = {
   // ==========================================
 
   // XXL Group (24px)
-  bodyXxlRegular:         text(WEIGHTS.regular, 24),
-  bodyXxlRegularSpacing:  text(WEIGHTS.regular, 24, '38.2px'), // Line-height específico
-  bodyXxlSemiboldSpacing: text(WEIGHTS.semibold, 24, '38.2px'),
+  bodyxxlRegular:         text(WEIGHTS.regular, 24),
+  bodyxxlRegularSpacing:  text(WEIGHTS.regular, 24, '38.2px'), // Line-height específico
+  bodyxxlSemiboldSpacing: text(WEIGHTS.semibold, 24, '38.2px'),
 
   // XL Group (18px)
-  bodyXlBoldSpacing:      text(WEIGHTS.bold, 18, '28.1px'),
-  bodyXlBold:             text(WEIGHTS.bold, 18),
-  bodyXlMedium:           text(WEIGHTS.medium, 18),
-  bodyXlMediumSpacing:    text(WEIGHTS.medium, 18, '28.1px'),
-  bodyXlRegular:          text(WEIGHTS.regular, 18),
+  bodyxlBoldSpacing:      text(WEIGHTS.bold, 18, '28.1px'),
+  bodyxlBold:             text(WEIGHTS.bold, 18),
+  bodyxlMedium:           text(WEIGHTS.medium, 18),
+  bodyxlMediumSpacing:    text(WEIGHTS.medium, 18, '28.1px'),
+  bodyxlRegular:          text(WEIGHTS.regular, 18),
 
   // LG Group (16px)
-  bodyLgMedium:           text(WEIGHTS.medium, 16),
-  bodyLgRegular:          text(WEIGHTS.regular, 16),
+  bodylgMedium:           text(WEIGHTS.medium, 16),
+  bodylgRegular:          text(WEIGHTS.regular, 16),
 
   // Regular/Base Group (14px)
   bodyRegular:            text(WEIGHTS.regular, 14),
