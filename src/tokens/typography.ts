@@ -1,4 +1,4 @@
-import '../../mui-types'; 
+import '../mui-types'; 
 import { ThemeOptions } from '@mui/material/styles'; 
 import { fluid } from "../utils/fluidTypography";
 
