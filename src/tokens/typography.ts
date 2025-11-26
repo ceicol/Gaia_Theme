@@ -1,4 +1,5 @@
-import { TypographyVariantsOptions } from "@mui/material/styles";
+import '../../mui-types'; 
+import { ThemeOptions } from '@mui/material/styles'; 
 import { fluid } from "../utils/fluidTypography";
 
 
@@ -44,7 +45,7 @@ const text = (weight: number, size: number, lineHeight?: number | string) => ({
 
 // --- DEFINICIÓN DE TOKENS ---
 
-export const typography: TypographyVariantsOptions = {
+export const typography: ThemeOptions ['typography'] = {
   fontFamily: FONT_BODY,
 
   // ==========================================
