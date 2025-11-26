@@ -1,5 +1,3 @@
-
-```markdown
 # Gaia UI Theme System
 
 Sistema de diseño centralizado para el ecosistema de aplicaciones Gaia. Construido sobre **Material UI v7+**, este paquete provee una integración "Plug & Play" con tokens de diseño, tipografía fluida, paletas de colores extendidas y utilidades de animación.
@@ -16,6 +14,7 @@ Sistema de diseño centralizado para el ecosistema de aplicaciones Gaia. Constru
 Este paquete se distribuye a través de Git y se consume desde la versión compilada (`dist`). Debido a cómo NPM gestiona la caché de dependencias Git, es importante usar el siguiente comando específico.
 
 ### Instalar o Actualizar (Comando Recomendado)
+
 Para instalar el paquete por primera vez **o para traer los últimos cambios** (ignorando la caché local), ejecuta:
 
 ```bash
@@ -25,6 +24,7 @@ npm install git+https://github.com/Andrssnsdc/theme-Gaia.git#build --force
 > **Nota:** El flag `--force` es necesario para asegurar que NPM descargue la última versión del código compilado, ya que a veces NPM no detecta cambios en repositorios Git si la versión del `package.json` no ha cambiado.
 
 ### Instalar dependencias Peer (Obligatorio)
+
 El sistema depende de las fuentes **Raleway** y **Barlow Condensed** y de las librerías base de MUI. Asegúrate de tenerlas:
 
 ```bash
@@ -82,6 +82,7 @@ Los colores son accesibles vía `color="..."` en componentes o `palette.nombre` 
 | **`link`** | Blue | `.main` |
 
 **Ejemplo de uso:**
+
 ```tsx
 <Button variant="contained" color="tertiary">Botón Jaguares</Button>
 <Box sx={{ bgcolor: 'green.glass', color: 'green.button' }}>Contenido</Box>
@@ -91,10 +92,11 @@ Los colores son accesibles vía `color="..."` en componentes o `palette.nombre` 
 
 ### 2. Tipografía (Figma Tokens)
 
-Usamos **Fluid Typography** (`clamp`). El tamaño se ajusta automáticamente entre Móvil y Desktop.
+Usamos **Fluid Typography** (`clamp`). El tamaño se ajusta automáticamente entre Móvil y Desktop.  
 Fuente Títulos: **Barlow Condensed** | Fuente Cuerpo: **Raleway**.
 
 #### Títulos (Headers)
+
 | Variante | Descripción |
 | :--- | :--- |
 | `h1xxlBold` | 64px Bold |
@@ -113,6 +115,7 @@ Fuente Títulos: **Barlow Condensed** | Fuente Cuerpo: **Raleway**.
 | `h3Medium` | 18px Medium |
 
 #### Cuerpo (Body)
+
 | Variante | Descripción |
 | :--- | :--- |
 | `bodyxxlRegular` | 24px Regular |
@@ -130,6 +133,7 @@ Fuente Títulos: **Barlow Condensed** | Fuente Cuerpo: **Raleway**.
 | `bodyMedium` | 14px Medium |
 
 **Ejemplo de uso:**
+
 ```tsx
 <Typography variant="h1xxlBold">Título Principal</Typography>
 <Typography variant="bodyxxlRegularSpacing">Texto destacado</Typography>
@@ -142,6 +146,7 @@ Fuente Títulos: **Barlow Condensed** | Fuente Cuerpo: **Raleway**.
 Importa las constantes para mantener la consistencia. Los valores son fijos en píxeles.
 
 **Espaciado (`spacingConstants`):**
+
 - `min`: 8px
 - `sm`: 12px
 - `base`: 16px
@@ -151,12 +156,14 @@ Importa las constantes para mantener la consistencia. Los valores son fijos en p
 - `xxl`: 198px
 
 **Bordes (`borderRadius`):**
+
 - `sm`: 6px
 - `md`: 12px (Default)
 - `lg`: 24px
 - `pill`: 9999px
 
 **Ejemplo de uso:**
+
 ```tsx
 import { spacingConstants, borderRadius } from 'theme-gaia';
 
@@ -172,14 +179,17 @@ import { spacingConstants, borderRadius } from 'theme-gaia';
 ### 4. Efectos y Sombras
 
 **Sombras (`shadows`):**
+
 - `sm`: Sombra pequeña.
 - `md`: Sombra mediana.
 - `lg`: Sombra larga (elevación alta).
 
 **Glassmorphism (`glassEffect`):**
+
 Objeto helper que aplica background semi-transparente, blur y borde.
 
 **Ejemplo de uso:**
+
 ```tsx
 import { glassEffect, shadows } from 'theme-gaia';
 
@@ -199,6 +209,7 @@ Transiciones sincronizadas con las curvas de Figma.
 - **`transitionStyles.bounce`**: 600ms (BackOut). Ideal para botones, modales o elementos que "rebotan" al aparecer.
 
 **Ejemplo de uso:**
+
 ```tsx
 import { transitionStyles } from 'theme-gaia';
 
@@ -215,5 +226,9 @@ import { transitionStyles } from 'theme-gaia';
 ## 🛠 Solución de Problemas
 
 **Los cambios no se reflejan:**
+
 Ejecuta de nuevo el comando de instalación con `--force` para limpiar la caché de Git en tu proyecto.
+
+```bash
+npm install git+https://github.com/Andrssnsdc/theme-Gaia.git#build --force
 ```
