@@ -124,7 +124,7 @@ var typography = {
   bodyxxlSemiboldSpacing: text(WEIGHTS.semibold, 24, "38.2px"),
   // XL Group (18px)
   bodyxlBoldSpacing: text(WEIGHTS.bold, 18, "28.1px"),
-  bodyxlBold: text(WEIGHTS.bold, 18),
+  bodyxlSemibold: text(WEIGHTS.semibold, 18),
   bodyxlMedium: text(WEIGHTS.medium, 18),
   bodyxlMediumSpacing: text(WEIGHTS.medium, 18, "28.1px"),
   bodyxlRegular: text(WEIGHTS.regular, 18),

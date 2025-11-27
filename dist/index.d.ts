@@ -97,7 +97,7 @@ declare module '@mui/material/styles' {
         bodyxxlRegularSpacing: React.CSSProperties;
         bodyxxlSemiboldSpacing: React.CSSProperties;
         bodyxlBoldSpacing: React.CSSProperties;
-        bodyxlBold: React.CSSProperties;
+        bodyxlSemibold: React.CSSProperties;
         bodyxlMedium: React.CSSProperties;
         bodyxlMediumSpacing: React.CSSProperties;
         bodyxlRegular: React.CSSProperties;
@@ -126,7 +126,7 @@ declare module '@mui/material/styles' {
         bodyxxlRegularSpacing?: React.CSSProperties;
         bodyxxlSemiboldSpacing?: React.CSSProperties;
         bodyxlBoldSpacing?: React.CSSProperties;
-        bodyxlBold?: React.CSSProperties;
+        bodyxlSemibold?: React.CSSProperties;
         bodyxlMedium?: React.CSSProperties;
         bodyxlMediumSpacing?: React.CSSProperties;
         bodyxlRegular?: React.CSSProperties;
@@ -157,7 +157,7 @@ declare module '@mui/material/Typography' {
         bodyxxlRegularSpacing: true;
         bodyxxlSemiboldSpacing: true;
         bodyxlBoldSpacing: true;
-        bodyxlBold: true;
+        bodyxlSemibold: true;
         bodyxlMedium: true;
         bodyxlMediumSpacing: true;
         bodyxlRegular: true;
