@@ -67,7 +67,6 @@ export const typography: ThemeOptions ['typography'] = {
 
   // H3 Group
   h3xxlSemibold: header(WEIGHTS.semibold, 28),
-  
   h3xlRegular:   header(WEIGHTS.regular, 24),
   h3xlSemibold:  header(WEIGHTS.semibold, 24), 
   h3xlMedium:    header(WEIGHTS.medium, 24),   
