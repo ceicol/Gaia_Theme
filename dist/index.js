@@ -66,7 +66,7 @@ var brandColors = {
     glass: "#A4D38E",
     button: "#357761"
   },
-  blue: {
+  link: {
     main: "#005bb0"
     // links
   },
@@ -270,7 +270,7 @@ var themeOptions = {
       glass: brandColors.brown.glass
     },
     link: {
-      main: brandColors.blue.main
+      main: brandColors.link.main
     },
     // Bases
     text: {
