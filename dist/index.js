@@ -275,7 +275,7 @@ var createSwitchVariant = (colorName, colors) => {
           // Hover en estado activo
           "& .MuiSwitch-thumb": {
             // Anillo + Sombra más profunda
-            boxShadow: `inset 0 0  3px ${colors.ringColor}, 0px 4px 8px rgba(0, 0, 0, 0.35)`
+            boxShadow: `inset 0 0  3px ${colors.ringColor}, 0px 2px 4px rgba(0, 0, 0, 0.25)`
           }
         },
         // Track Activo
