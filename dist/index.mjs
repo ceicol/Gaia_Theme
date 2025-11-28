@@ -250,7 +250,10 @@ var createMapButtonVariant = (variantName, config) => {
           whiteSpace: "normal",
           // PERMITE SALTO DE LÍNEA
           overflowWrap: "break-word",
-          ...theme.typography.h3Medium,
+          fontFamily: "'Barlow Condensed', sans-serif",
+          fontSize: "18px",
+          fontWeight: 500,
+          textAlign: "start",
           boxShadow: shadows.sm,
           zIndex: 10,
           opacity: 1,
