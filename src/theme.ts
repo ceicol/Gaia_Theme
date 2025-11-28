@@ -55,38 +55,28 @@ const createMapButtonVariant = (
         '&::after': {
           content: 'attr(data-label)', // Usa la prop data-label="" del HTML
           position: 'absolute',
-          left: 'calc(100% + 12px)', // Posición a la derecha
-          top: '50%',
-          transform: 'translateY(-50%)',
+          right: '-103.406px',
+          top: '-16.203px',
+          transform: 'none',
           maxWidth: '110px',
+          
           
           backgroundColor: config.hover.labelBg,
           color: brandColors.text.light, // text.secondary
           
           padding: '6px 12px',
           borderRadius: borderRadius.sm,
-          whiteSpace: 'nowrap',
-          fontSize: '14px', // Ajuste visual acorde a Figma
-          fontWeight: 500,
+          borderBottomLeftRadius: 0,
+          whiteSpace: 'normal',         // PERMITE SALTO DE LÍNEA
+          overflowWrap: 'break-word',
+          ...theme.typography.h3Medium,
           boxShadow: shadows.sm,
           zIndex: 10,
           opacity: 1,
           pointerEvents: 'none', // Para que no interfiera con el mouse
         },
 
-        // 2. FLECHITA DEL TOOLTIP (Triángulo)
-        '&::before': {
-          content: '""',
-          position: 'absolute',
-          left: 'calc(100% + 2px)', 
-          top: '50%',
-          transform: 'translateY(-50%)',
-          borderTop: '6px solid transparent',
-          borderBottom: '6px solid transparent',
-          borderRight: `10px solid ${config.hover.labelBg}`,
-          opacity: 1,
-          zIndex: 10,
-        }
+        
       },
 
       // Animación de entrada para el tooltip
