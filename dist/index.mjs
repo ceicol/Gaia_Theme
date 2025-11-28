@@ -206,42 +206,52 @@ var createSwitchVariant = (colorName, colors) => {
   return {
     props: { color: colorName },
     style: {
-      // --- ESTADO INACTIVO (OFF) ---
+      // ===========================
+      // ESTADO INACTIVO (OFF)
+      // ===========================
       "& .MuiSwitch-switchBase": {
         color: colors.thumbInactive,
-        // Circulo inactivo
-        boxShadow: "0px 1px 2px rgba(0, 0, 0, 0.25)",
-        "&:hover": { backgroundColor: `${colors.main}15` }
-      },
-      "& .MuiSwitch-thumb": {
-        backgroundColor: colors.main,
-        // El núcleo de 12px
-        // Inset de 3px crea el anillo exterior de 18px
-        // Además mantenemos la sombra externa suave (drop shadow)
-        boxShadow: `inset 0 0 0 3px ${colors.glass || colors.light}, 0px 2px 4px rgba(0, 0, 0, 0.2)`
+        boxShadow: "none",
+        // Quitamos sombras por defecto del wrapper
+        // --- HOVER EFFECT (Aquí ocurre la magia) ---
+        "&:hover": {
+          backgroundColor: "transparent",
+          // Sin halo gris
+          // Apuntamos al CIRCULO (Thumb)
+          "& .MuiSwitch-thumb": {
+            backgroundColor: colors.main,
+            // El núcleo se vuelve sólido (Main)
+            // INSET: 3px de anillo (RingColor) + Sombra externa suave
+            boxShadow: `inset 0 0 0 3px ${colors.ringColor}, 0px 2px 4px rgba(0, 0, 0, 0.25)`
+          }
+        }
       },
       "& .MuiSwitch-track": {
         backgroundColor: brandColors.background.main,
-        // Track blanco
         border: `1px solid ${colors.main}`,
-        // Borde color Main
         opacity: 1,
-        // MUI por defecto le baja la opacidad, la forzamos a 1
-        boxShadow: "0px 1px 2px rgba(0, 0, 0, 0.25)"
+        boxShadow: "0px 1px 2px rgba(0, 0, 0, 0.1)"
       },
-      // --- ESTADO ACTIVO (ON) ---
+      // ===========================
+      // ESTADO ACTIVO (ON)
+      // ===========================
       "& .MuiSwitch-switchBase.Mui-checked": {
         color: colors.main,
-        // Circulo activo
-        "&:hover": { backgroundColor: `${colors.main}15` },
-        boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.35)",
-        // El track cuando está activo
+        "&:hover": {
+          backgroundColor: "transparent",
+          // Hover en estado activo
+          "& .MuiSwitch-thumb": {
+            // Anillo + Sombra más profunda
+            boxShadow: `inset 0 0 0 3px ${colors.ringColor}, 0px 4px 8px rgba(0, 0, 0, 0.35)`
+          }
+        },
+        // Track Activo
         "& + .MuiSwitch-track": {
-          backgroundColor: colors.glass || colors.light,
-          // Track activo (Glass o Light)
+          backgroundColor: colors.ringColor,
+          // Usamos el color del anillo para el fondo del track
           border: `1px solid ${colors.main}`,
           opacity: 1,
-          boxShadow: "inset 0px 2px 4px rgba(0, 0, 0, 0.33)"
+          boxShadow: "inset 0px 1px 3px rgba(0, 0, 0, 0.2)"
         }
       }
     }
@@ -249,7 +259,6 @@ var createSwitchVariant = (colorName, colors) => {
 };
 var themeOptions = {
   palette: {
-    // Semánticos
     primary: {
       main: brandColors.primary.main,
       light: brandColors.primary.light,
@@ -260,7 +269,6 @@ var themeOptions = {
       light: brandColors.secondary.light,
       glass: brandColors.secondary.glass
     },
-    // Custom
     tertiary: {
       main: brandColors.tertiary.main,
       light: brandColors.tertiary.light,
@@ -284,7 +292,6 @@ var themeOptions = {
     link: {
       main: brandColors.link.main
     },
-    // Bases
     text: {
       primary: brandColors.text.dark,
       secondary: brandColors.text.light
@@ -294,11 +301,8 @@ var themeOptions = {
       paper: brandColors.background.light
     }
   },
-  // Importamos la tipografía generada (con clamp y helpers)
   typography,
-  // Sombras nativas de MUI (array)
   shadows: Array(25).fill("none").map((_, i) => customShadowsArray[i] || "none"),
-  // Tokens Custom inyectados para acceso rápido via theme.token
   customShape: borderRadius,
   customSpacing: spacingConstants,
   customTransitions: transitionStyles,
@@ -309,6 +313,7 @@ var themeOptions = {
         root: {
           borderRadius: borderRadius.md,
           transition: transitionStyles.smooth,
+          // Animación suave en botones también
           padding: `${spacingConstants.min}px ${spacingConstants.md}px`,
           textTransform: "none",
           fontWeight: 500,
@@ -317,7 +322,7 @@ var themeOptions = {
         }
       }
     },
-    // 2. SWITCH (Personalización Estructural + Colores)
+    // 2. SWITCH 
     MuiSwitch: {
       styleOverrides: {
         root: {
@@ -332,41 +337,52 @@ var themeOptions = {
           padding: 0,
           margin: 0,
           transitionDuration: "300ms",
+          // Movimiento izquierda-derecha
           transform: "translateX(-2px)",
           "&.Mui-checked": {
             transform: "translateX(16px)",
-            color: brandColors.background.main
+            color: "#fff"
+            // Fallback color
           }
         },
         thumb: {
           width: 18,
           height: 18,
-          boxShadow: "none"
+          // Sombra por defecto (Sin hover)
+          boxShadow: "0px 2px 4px rgba(0,0,0,0.25)",
+          // --- AQUÍ ESTÁ LA ANIMACIÓN SUAVE DEL EFECTO DE COLOR ---
+          // Animamos background, shadow y color para que el "inset" aparezca suavemente
+          transition: "background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease"
         },
         track: {
           borderRadius: 12 / 2,
           height: 12,
           opacity: 1,
-          backgroundColor: brandColors.background.main,
-          boxSizing: "border-box"
+          backgroundColor: "#fff",
+          boxSizing: "border-box",
+          transition: "background-color 0.3s ease, border 0.3s ease, box-shadow 0.3s ease"
         }
       },
       variants: [
+        // GREEN
         createSwitchVariant("green", {
           main: brandColors.green.main,
           light: brandColors.green.light,
-          glass: brandColors.green.glass,
+          ringColor: brandColors.green.glass,
           thumbInactive: brandColors.green.glass
         }),
+        // PRIMARY
         createSwitchVariant("primary", {
           main: brandColors.primary.main,
           light: brandColors.primary.light,
-          glass: brandColors.primary.glass,
+          ringColor: brandColors.primary.light,
           thumbInactive: brandColors.primary.light
         }),
+        // CTA
         createSwitchVariant("cta", {
           main: brandColors.cta.main,
           light: brandColors.cta.light,
+          ringColor: brandColors.cta.light,
           thumbInactive: brandColors.cta.light
         })
       ]
@@ -374,33 +390,27 @@ var themeOptions = {
     MuiSlider: {
       styleOverrides: {
         root: {
-          // Por defecto usa el color primary
           color: brandColors.primary.main,
           height: 8
-          // Altura del track general
         },
         thumb: {
           height: 20,
           width: 20,
-          backgroundColor: brandColors.primary.main
-          // Circulo Primary Main
+          backgroundColor: brandColors.primary.main,
+          transition: "box-shadow 0.3s ease"
         },
         track: {
-          // La parte activa (Izquierda del circulo)
           backgroundColor: "#25484D",
           border: "none"
         },
         rail: {
-          // La parte inactiva (Derecha del circulo)
           color: brandColors.primary.light,
           opacity: 1
-          // Forzamos opacidad 1 para ver el color real
         }
       }
     },
     MuiCssBaseline: {
       styleOverrides: {
-        // Aseguramos que el HTML/Body tome la fuente base
         body: {
           fontFamily: "'Raleway', sans-serif"
         }
