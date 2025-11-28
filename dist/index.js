@@ -270,7 +270,6 @@ var createSwitchVariant = (colorName, colors) => {
         color: colors.main,
         "&:hover": {
           backgroundColor: "transparent",
-          transition: `all ${animations.duration.standard}ms ${animations.easing.smart}`,
           "& .MuiSwitch-thumb": {
             //  agregamos el anillo "inset"
             boxShadow: `inset 0 0 0 3px ${colors.ringColor}, 0px 4px 8px rgba(0, 0, 0, 0.35)`
