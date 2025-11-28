@@ -182,10 +182,10 @@ const themeOptions: ThemeOptions = {
           // ANIMACIÓN SUAVE Y COMPLEJA (Figma Smart Animate)
           
           transition: `
-            background-color ${transitionStyles.smooth}, 
-            box-shadow ${transitionStyles.smooth}, 
-            color ${transitionStyles.smooth},
-            transform ${transitionStyles.smooth}
+            background-color ${animations.duration.complex}ms ${animations.easing.smart}, 
+            box-shadow ${animations.duration.complex}ms ${animations.easing.smart}, 
+            color ${animations.duration.complex}ms ${animations.easing.smart},
+            transform ${animations.duration.complex}ms ${animations.easing.smart}
           `,
         },
         track: {
@@ -194,7 +194,7 @@ const themeOptions: ThemeOptions = {
           opacity: 1,
           backgroundColor: '#fff',
           boxSizing: 'border-box',
-          transition: `background-color ${transitionStyles.smooth}`,
+          transition: `background-color ${animations.duration.complex}ms ${animations.easing.smart}`,
         },
       },
       
