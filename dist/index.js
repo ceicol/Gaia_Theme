@@ -243,7 +243,7 @@ var createSwitchVariant = (colorName, colors) => {
       "& .MuiSwitch-switchBase": {
         color: colors.thumbInactive,
         // Circulo inactivo
-        // Hover sutil
+        boxShadow: "0px 1px 2px rgba(0, 0, 0, 0.2)",
         "&:hover": { backgroundColor: `${colors.main}15` }
       },
       "& .MuiSwitch-track": {
@@ -251,21 +251,24 @@ var createSwitchVariant = (colorName, colors) => {
         // Track blanco
         border: `1px solid ${colors.main}`,
         // Borde color Main
-        opacity: 1
+        opacity: 1,
         // MUI por defecto le baja la opacidad, la forzamos a 1
+        boxShadow: "0px 1px 2px rgba(0, 0, 0, 0.1)"
       },
       // --- ESTADO ACTIVO (ON) ---
       "& .MuiSwitch-switchBase.Mui-checked": {
         color: colors.main,
         // Circulo activo
         "&:hover": { backgroundColor: `${colors.main}15` },
+        boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.35)",
         // El track cuando está activo
         "& + .MuiSwitch-track": {
           backgroundColor: colors.glass || colors.light,
           // Track activo (Glass o Light)
           border: "none",
           // Quitamos el borde en estado activo para que se vea limpio
-          opacity: 1
+          opacity: 1,
+          boxShadow: "inset 0px 2px 4px rgba(0, 0, 0, 0.1)"
         }
       }
     }
@@ -349,21 +352,23 @@ var themeOptions = {
           height: 18,
           padding: 0,
           display: "flex",
-          alignItems: "center"
+          alignItems: "center",
+          overflow: "visible"
         },
         switchBase: {
           padding: 0,
           margin: 0,
           transitionDuration: "300ms",
+          transform: "translateX(-2px)",
           "&.Mui-checked": {
-            transform: "translateX(14px)",
+            transform: "translateX(16px)",
             color: "#fff"
           }
         },
         thumb: {
           width: 18,
           height: 18,
-          boxShadow: "0px 2px 4px rgba(0,0,0,0.2)"
+          boxShadow: "none"
         },
         track: {
           borderRadius: 12 / 2,
