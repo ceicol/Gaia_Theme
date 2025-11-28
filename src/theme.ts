@@ -58,6 +58,7 @@ const createSwitchVariant = (
         
         '&:hover': { 
           backgroundColor: 'transparent',
+          transition: `all ${animations.duration.standard}ms ${animations.easing.smart}`,
           
           '& .MuiSwitch-thumb': {
              //  agregamos el anillo "inset"
@@ -162,110 +163,91 @@ const themeOptions: ThemeOptions = {
           fontWeight: 500,
           fontSize: '18px',
           fontFamily: "'Barlow Condensed', sans-serif",
+          lineHeight: 1,
          },
       },
       variants: [
-        // =============================================
         // BOTÓN 1: Icon Glass (Redondo 36px)
-        // =============================================
         {
           props: { variant: 'gaia-icon-glass' },
           style: {
             borderRadius: '50%',
             minWidth: '36px', width: '36px', height: '36px',
             padding: '8px',
-            backgroundColor: brandColors.background.light, // Background Paper
-            color: brandColors.primary.main, // Default content color
-            border: '1px solid transparent', // Prepara el borde para evitar saltos
-
+            backgroundColor: brandColors.background.light,
+            color: brandColors.primary.main,
+            border: '1px solid transparent', 
             '&:hover': {
               boxShadow: shadows.sm,
               backgroundColor: brandColors.background.light,
             },
-            // Active State
             '&:active, &.Mui-active': {
-              ...glassEffect, // Aplica background glass, backdropFilter, etc.
+              ...glassEffect, 
               color: brandColors.primary.glass,
               borderColor: brandColors.primary.main,
               boxShadow: 'none',
             },
           },
         },
-
-        // =============================================
         // BOTÓN 2: Icon Outline (Redondo 40px)
-        // =============================================
         {
           props: { variant: 'gaia-icon-outline' },
           style: {
             borderRadius: '50%',
             minWidth: '40px', width: '40px', height: '40px',
             padding: '8px',
-            backgroundColor: brandColors.background.light, // Background Paper
+            backgroundColor: brandColors.background.light,
             color: brandColors.brown.main,
             border: `1px solid ${brandColors.primary.main}`,
-
             '&:hover': {
               boxShadow: shadows.sm,
-              border: '1px solid transparent', // Quita el borde visualmente
+              border: '1px solid transparent',
               backgroundColor: brandColors.background.light,
             },
-            // Active State
             '&:active, &.Mui-active': {
-              backgroundColor: brandColors.background.main, // Background Default
+              backgroundColor: brandColors.background.main,
               color: brandColors.brown.light,
-              border: 'none', // Sin borde
+              border: 'none',
               boxShadow: 'none',
             },
           },
         },
-
-        // =============================================
-        // BOTÓN 3: CTA Contained (Rectangular)
-        // =============================================
+        // BOTÓN 3: CTA Contained
         {
           props: { variant: 'gaia-cta-contained' },
           style: {
             borderRadius: borderRadius.md,
-            // Spacing: Min (8px) vertical, Md (24px) horizontal
             padding: `${spacingConstants.min} ${spacingConstants.md}`,
             border: 'none',
             backgroundColor: brandColors.cta.main,
-            color: brandColors.text.light, // Text Secondary
-            
+            color: brandColors.text.light,
             '&:hover': {
               boxShadow: shadows.sm,
-              backgroundColor: brandColors.cta.main, // Mantiene color base + sombra
-              filter: 'brightness(1.05)', // Pequeño brillo extra opcional
+              backgroundColor: brandColors.cta.main,
+              filter: 'brightness(1.05)',
             },
-            // Active State
             '&:active, &.Mui-active': {
               backgroundColor: brandColors.cta.light,
-              boxShadow: 'inset 0px 2px 4px rgba(0,0,0,0.1)', // Feedback de presión
+              boxShadow: 'inset 0px 2px 4px rgba(0,0,0,0.1)',
             },
           },
         },
-
-        // =============================================
-        // BOTÓN 4: CTA Outlined (Rectangular)
-        // =============================================
+        // BOTÓN 4: CTA Outlined
         {
           props: { variant: 'gaia-cta-outlined' },
           style: {
             borderRadius: borderRadius.md,
             padding: `${spacingConstants.min} ${spacingConstants.md}`,
             border: `1px solid ${brandColors.cta.main}`,
-            backgroundColor: brandColors.background.main, // Background Default
-            color: brandColors.text.dark, // Text Primary
-
+            backgroundColor: brandColors.background.main,
+            color: brandColors.text.dark,
             '&:hover': {
               boxShadow: shadows.sm,
               backgroundColor: brandColors.background.main,
               border: `1px solid ${brandColors.cta.main}`,
             },
-            // Active State
             '&:active, &.Mui-active': {
-              backgroundColor: brandColors.background.light, // Background Paper
+              backgroundColor: brandColors.background.light,
               color: brandColors.brown.light,
               borderColor: brandColors.cta.main, 
             },
@@ -273,80 +255,7 @@ const themeOptions: ThemeOptions = {
         },
       ],
     },
-    // ----------------------------------------------------
-    // SWITCH CONFIG
-    // ----------------------------------------------------
-    MuiSwitch: {
-      styleOverrides: {
-        root: {
-          width: 32,
-          height: 18,
-          padding: 0,
-          display: 'flex',
-          alignItems: 'center',
-          overflow: 'visible', // sombra no se corte
-        },
-        switchBase: {
-          padding: 0,
-          margin: 0,
-          
-          transitionDuration: `${animations.duration.standard}ms`, 
-          transform: 'translateX(-2px)', 
-          '&.Mui-checked': {
-            transform: 'translateX(16px)',
-            color: '#fff', 
-          },
-        },
-        thumb: {
-          width: 18,
-          height: 18,
-          boxShadow: '0px 2px 4px rgba(0,0,0,0.25)', 
-          
-          // ANIMACIÓN SUAVE Y COMPLEJA (Figma Smart Animate)
-          
-          transition: `
-            background-color ${animations.duration.complex}ms ${animations.easing.smart}, 
-            box-shadow ${animations.duration.complex}ms ${animations.easing.smart}, 
-            color ${animations.duration.complex}ms ${animations.easing.smart},
-            transform ${animations.duration.complex}ms ${animations.easing.smart}
-          `,
-        },
-        track: {
-          borderRadius: 12 / 2,
-          height: 12,
-          opacity: 1,
-          backgroundColor: '#fff',
-          boxSizing: 'border-box',
-          transition: `background-color ${animations.duration.complex}ms ${animations.easing.smart}`,
-        },
-      },
-      
-      variants: [
-        // GREEN -> Ring: GLASS
-        createSwitchVariant('green', {
-          main: brandColors.green.main,
-          light: brandColors.green.light,
-          ringColor: brandColors.green.glass, // GREEN usa GLASS          
-          thumbInactive: brandColors.green.glass,
-        }),
 
-        // PRIMARY -> Ring: LIGHT
-        createSwitchVariant('primary', {
-          main: brandColors.primary.main,
-          light: brandColors.primary.light,
-          ringColor: brandColors.primary.light, // PRIMARY usa LIGHT
-          thumbInactive: brandColors.primary.light,
-        }),
-
-        // CTA -> Ring: LIGHT
-        createSwitchVariant('cta', {
-          main: brandColors.cta.main,
-          light: brandColors.cta.light,
-          ringColor: brandColors.cta.light, // CTA usa LIGHT       
-          thumbInactive: brandColors.cta.light,
-        }),
-      ],
-    },
 
     MuiSlider: {
       styleOverrides: {
