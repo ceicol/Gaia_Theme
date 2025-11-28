@@ -76,10 +76,12 @@ Los colores son accesibles vía `color="..."` en componentes o `palette.nombre` 
 | **`tertiary`** | tertiary | `.main`, `.light`, `.glass` |
 | **`secondary`** | secondary | `.main`, `.light`, `.glass` |
 | **`primary`** | primary | `.main`, `.light`, `.glass` |
-| **`cta`** | Cta | `.main`, `.light` |
-| **`green`** | Green | `.main`, `.light`, `.glass`, `.button` |
-| **`brown`** | Brown | `.main`, `.light`, `.glass` |
-| **`link`** | Blue | `.main` |
+| **`cta`** | cta | `.main`, `.light` |
+| **`green`** | green | `.main`, `.light`, `.glass`, `.button` |
+| **`brown`** | brown | `.main`, `.light`, `.glass` |
+| **`link`** | link | `.main` |
+| **`textPrimary`** | text | `.primary` |
+| **`textSecondary`** | text | `.secondary` |
 
 **Ejemplo de uso:**
 

@@ -48,7 +48,7 @@ const themeOptions: ThemeOptions = {
       glass: brandColors.brown.glass
     },
     link: {
-      main: brandColors.blue.main 
+      main: brandColors.link.main 
     },
     // Bases
     text: {
