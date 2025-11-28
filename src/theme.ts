@@ -11,7 +11,12 @@ import { Shadows } from '@mui/material/styles';
 // --- HELPER PARA GENERAR SWITCHES CUSTOM ---
 type SwitchColorProp = SwitchProps['color']; 
 const createSwitchVariant = ( colorName: SwitchColorProp, 
-  colors: { main: string; light: string; glass?: string; thumbInactive: string }
+  colors: { 
+    main: string; 
+    light: string; 
+    glass?: string; 
+    thumbInactive: string 
+  }
 ) => {
   return {
     props: { color: colorName },
@@ -20,11 +25,19 @@ const createSwitchVariant = ( colorName: SwitchColorProp,
       '& .MuiSwitch-switchBase': {
         color: colors.thumbInactive, // Circulo inactivo
         boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.25)', 
-        '&:hover': { backgroundColor: `${colors.main}15` }, 
+        '&:hover': { backgroundColor: `${colors.main}15`},
       },
+
+      '& .MuiSwitch-thumb': {
+            backgroundColor: colors.main, // El núcleo de 12px
+            // Inset de 3px crea el anillo exterior de 18px
+            // Además mantenemos la sombra externa suave (drop shadow)
+            boxShadow: `inset 0 0 0 3px ${ colors.glass || colors.light}, 0px 2px 4px rgba(0, 0, 0, 0.2)`,
+      },   
+
       '& .MuiSwitch-track': {
         backgroundColor: brandColors.background.main, // Track blanco
-        border: `2px solid ${colors.main}`, // Borde color Main
+        border: `1px solid ${colors.main}`, // Borde color Main
         opacity: 1, // MUI por defecto le baja la opacidad, la forzamos a 1
         boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.25)', 
       },
@@ -37,7 +50,7 @@ const createSwitchVariant = ( colorName: SwitchColorProp,
         // El track cuando está activo
         '& + .MuiSwitch-track': {
           backgroundColor: colors.glass || colors.light, // Track activo (Glass o Light)
-           border: `2px solid ${colors.main}`, 
+          border: `1px solid ${colors.main}`, 
           opacity: 1,
           boxShadow: 'inset 0px 2px 4px rgba(0, 0, 0, 0.33)', 
         },
