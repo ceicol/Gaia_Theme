@@ -1,5 +1,5 @@
 import React from 'react';
-import * as _mui_material_styles from '@mui/material/styles';
+import * as _mui_material from '@mui/material';
 
 declare const borderRadius: {
     sm: string;
@@ -188,6 +188,9 @@ declare module '@mui/material/Button' {
         'gaia-icon-outline': true;
         'gaia-cta-contained': true;
         'gaia-cta-outlined': true;
+        'gaia-amazonia': true;
+        'gaia-panamazonia': true;
+        'gaia-macroterritorio': true;
     }
 }
 declare module '@mui/material/IconButton' {
@@ -317,7 +320,7 @@ declare module '@mui/material/Switch' {
     }
 }
 
-declare let theme: _mui_material_styles.Theme;
+declare let theme: _mui_material.Theme;
 
 declare const brandColors: {
     tertiary: {
