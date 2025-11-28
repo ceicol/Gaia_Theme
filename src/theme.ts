@@ -1,5 +1,6 @@
 import './mui-types'; 
 import { createTheme, ThemeOptions, responsiveFontSizes, } from '@mui/material/styles';
+import { SwitchProps } from '@mui/material/Switch';
 import { brandColors } from './tokens/colors';
 import { typography } from './tokens/typography';
 import { customShadowsArray, shadows } from './tokens/shadows';
@@ -7,7 +8,41 @@ import { borderRadius, spacingConstants } from './tokens/layout';
 import { transitionStyles } from './tokens/animations';
 import { Shadows } from '@mui/material/styles';
 
+// --- HELPER PARA GENERAR SWITCHES CUSTOM ---
+type SwitchColorProp = SwitchProps['color']; 
+const createSwitchVariant = ( colorName: SwitchColorProp, 
+  colors: { main: string; light: string; glass?: string; thumbInactive: string }
+) => {
+  return {
+    props: { color: colorName },
+    style: {
+      // --- ESTADO INACTIVO (OFF) ---
+      '& .MuiSwitch-switchBase': {
+        color: colors.thumbInactive, // Circulo inactivo
+        // Hover sutil
+        '&:hover': { backgroundColor: `${colors.main}15` }, 
+      },
+      '& .MuiSwitch-track': {
+        backgroundColor: '#FFFFFF', // Track blanco
+        border: `1px solid ${colors.main}`, // Borde color Main
+        opacity: 1, // MUI por defecto le baja la opacidad, la forzamos a 1
+      },
 
+      // --- ESTADO ACTIVO (ON) ---
+      '& .MuiSwitch-switchBase.Mui-checked': {
+        color: colors.main, // Circulo activo
+        '&:hover': { backgroundColor: `${colors.main}15` }, 
+        
+        // El track cuando está activo
+        '& + .MuiSwitch-track': {
+          backgroundColor: colors.glass || colors.light, // Track activo (Glass o Light)
+          border: 'none', // Quitamos el borde en estado activo para que se vea limpio
+          opacity: 1,
+        },
+      },
+    },
+  };
+};
 
 // ==========================================================
 //  CREACIÓN DEL TEMA
@@ -87,6 +122,86 @@ const themeOptions: ThemeOptions = {
         },
       },
     },
+      // 2. SWITCH (Personalización Estructural + Colores)
+    MuiSwitch: {
+      styleOverrides: {
+        root: {
+          width: 32,
+          height: 18,
+          padding: 0,
+          display: 'flex',
+          alignItems: 'center',
+        },
+        switchBase: {
+          padding: 0,
+          margin: 0,
+          transitionDuration: '300ms',
+          '&.Mui-checked': {
+            transform: 'translateX(14px)',
+            color: '#fff',
+          },
+        },
+        thumb: {
+          width: 18,
+          height: 18,
+          boxShadow: '0px 2px 4px rgba(0,0,0,0.2)',
+        },
+        track: {
+          borderRadius: 12 / 2,
+          height: 12,
+          opacity: 1,
+          backgroundColor: '#fff',
+          boxSizing: 'border-box',
+        },
+      },
+      
+      variants: [
+        createSwitchVariant('green', {
+          main: brandColors.green.main,
+          light: brandColors.green.light,
+          glass: brandColors.green.glass,
+          thumbInactive: brandColors.green.glass,
+        }),
+        createSwitchVariant('primary', {
+          main: brandColors.primary.main,
+          light: brandColors.primary.light,
+          glass: brandColors.primary.glass,
+          thumbInactive: brandColors.primary.light,
+        }),
+        createSwitchVariant('cta', {
+          main: brandColors.cta.main,
+          light: brandColors.cta.light,
+          thumbInactive: brandColors.cta.light,
+        }),
+      ],
+    },
+
+     MuiSlider: {
+      styleOverrides: {
+        root: {
+          // Por defecto usa el color primary
+          color: brandColors.primary.main, 
+          height: 8, // Altura del track general
+        },
+        thumb: {
+          height: 20,
+          width: 20,
+          backgroundColor: brandColors.primary.main, // Circulo Primary Main
+        },
+        track: {
+          // La parte activa (Izquierda del circulo)
+          backgroundColor: '#25484D', 
+          border: 'none',
+        },
+        rail: {
+          // La parte inactiva (Derecha del circulo)
+          color: brandColors.primary.light, 
+          opacity: 1, // Forzamos opacidad 1 para ver el color real
+        },
+      },
+    },
+
+
     MuiCssBaseline: {
       styleOverrides: {
         // Aseguramos que el HTML/Body tome la fuente base
