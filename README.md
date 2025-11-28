@@ -18,7 +18,7 @@ Este paquete se distribuye a través de Git y se consume desde la versión compi
 Para instalar el paquete por primera vez **o para traer los últimos cambios** (ignorando la caché local), ejecuta:
 
 ```bash
-npm install git+https://github.com/Andrssnsdc/theme-Gaia.git#build --force
+npm install git+https://github.com/ceicol/Gaia_Theme.git#build --force
 ```
 
 > **Nota:** El flag `--force` es necesario para asegurar que NPM descargue la última versión del código compilado, ya que a veces NPM no detecta cambios en repositorios Git si la versión del `package.json` no ha cambiado.
@@ -262,5 +262,5 @@ El tema incluye 4 variantes de botones prediseñadas para casos de uso específi
 Ejecuta de nuevo el comando de instalación con `--force` para limpiar la caché de Git en tu proyecto.
 
 ```bash
-npm install git+https://github.com/Andrssnsdc/theme-Gaia.git#build --force
+npm install git+https://github.com/ceicol/Gaia_Theme.git#build --force
 ```
