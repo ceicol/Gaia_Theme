@@ -202,6 +202,58 @@ var transitionStyles = {
 };
 
 // src/theme.ts
+var createSwitchVariant = (colorName, colors) => {
+  return {
+    props: { color: colorName },
+    style: {
+      // =================================================================
+      // 1. ESTADO INACTIVO (OFF)
+      // =================================================================
+      "& .MuiSwitch-switchBase": {
+        color: colors.thumbInactive,
+        boxShadow: "none",
+        // --- HOVER OFF ---
+        "&:hover": {
+          backgroundColor: "transparent",
+          // ANIMACIÓN DE ANILLO (Thumb)
+          "& .MuiSwitch-thumb": {
+            backgroundColor: colors.main,
+            // Se vuelve sólido
+            // Inset: 3px de anillo + Sombra externa
+            boxShadow: `inset 0 0 0 3px ${colors.ringColor}, 0px 2px 4px rgba(0, 0, 0, 0.25)`
+          }
+        }
+      },
+      "& .MuiSwitch-track": {
+        backgroundColor: brandColors.background.main,
+        border: `1px solid ${colors.main}`,
+        opacity: 1,
+        boxShadow: "0px 1px 2px rgba(0, 0, 0, 0.1)"
+      },
+      // =================================================================
+      // 2. ESTADO ACTIVO (ON)
+      // =================================================================
+      "& .MuiSwitch-switchBase.Mui-checked": {
+        color: colors.main,
+        "&:hover": {
+          backgroundColor: "transparent",
+          transition: `all ${animations.duration.standard}ms ${animations.easing.smart}`,
+          "& .MuiSwitch-thumb": {
+            //  agregamos el anillo "inset"
+            boxShadow: `inset 0 0 0 3px ${colors.ringColor}, 0px 4px 8px rgba(0, 0, 0, 0.35)`
+          }
+        },
+        // Track Activo
+        "& + .MuiSwitch-track": {
+          backgroundColor: colors.ringColor,
+          border: `1px solid ${colors.main}`,
+          opacity: 1,
+          boxShadow: "inset 0px 1px 3px rgba(0, 0, 0, 0.2)"
+        }
+      }
+    }
+  };
+};
 var themeOptions = {
   palette: {
     primary: {
@@ -372,6 +424,78 @@ var themeOptions = {
             }
           }
         }
+      ]
+    },
+    // ----------------------------------------------------
+    // SWITCH CONFIG
+    // ----------------------------------------------------
+    MuiSwitch: {
+      styleOverrides: {
+        root: {
+          width: 32,
+          height: 18,
+          padding: 0,
+          display: "flex",
+          alignItems: "center",
+          overflow: "visible"
+          // sombra no se corte
+        },
+        switchBase: {
+          padding: 0,
+          margin: 0,
+          transitionDuration: `${animations.duration.standard}ms`,
+          transform: "translateX(-2px)",
+          "&.Mui-checked": {
+            transform: "translateX(16px)",
+            color: "#fff"
+          }
+        },
+        thumb: {
+          width: 18,
+          height: 18,
+          boxShadow: "0px 2px 4px rgba(0,0,0,0.25)",
+          // ANIMACIÓN SUAVE Y COMPLEJA (Figma Smart Animate)
+          transition: `
+            background-color ${animations.duration.complex}ms ${animations.easing.smart}, 
+            box-shadow ${animations.duration.complex}ms ${animations.easing.smart}, 
+            color ${animations.duration.complex}ms ${animations.easing.smart},
+            transform ${animations.duration.complex}ms ${animations.easing.smart}
+          `
+        },
+        track: {
+          borderRadius: 12 / 2,
+          height: 12,
+          opacity: 1,
+          backgroundColor: "#fff",
+          boxSizing: "border-box",
+          transition: `background-color ${animations.duration.complex}ms ${animations.easing.smart}`
+        }
+      },
+      variants: [
+        // GREEN -> Ring: GLASS
+        createSwitchVariant("green", {
+          main: brandColors.green.main,
+          light: brandColors.green.light,
+          ringColor: brandColors.green.glass,
+          // GREEN usa GLASS          
+          thumbInactive: brandColors.green.glass
+        }),
+        // PRIMARY -> Ring: LIGHT
+        createSwitchVariant("primary", {
+          main: brandColors.primary.main,
+          light: brandColors.primary.light,
+          ringColor: brandColors.primary.light,
+          // PRIMARY usa LIGHT
+          thumbInactive: brandColors.primary.light
+        }),
+        // CTA -> Ring: LIGHT
+        createSwitchVariant("cta", {
+          main: brandColors.cta.main,
+          light: brandColors.cta.light,
+          ringColor: brandColors.cta.light,
+          // CTA usa LIGHT       
+          thumbInactive: brandColors.cta.light
+        })
       ]
     },
     MuiSlider: {
