@@ -173,6 +173,9 @@ declare module '@mui/material/Button' {
     'gaia-icon-outline': true;    
     'gaia-cta-contained': true;   
     'gaia-cta-outlined': true;    
+    'gaia-amazonia': true;
+    'gaia-panamazonia': true;
+    'gaia-macroterritorio': true;
   }
 
 }
