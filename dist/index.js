@@ -239,22 +239,20 @@ var createSwitchVariant = (colorName, colors) => {
   return {
     props: { color: colorName },
     style: {
-      // ===========================
-      // ESTADO INACTIVO (OFF)
-      // ===========================
+      // =================================================================
+      // 1. ESTADO INACTIVO (OFF)
+      // =================================================================
       "& .MuiSwitch-switchBase": {
         color: colors.thumbInactive,
         boxShadow: "none",
-        // Quitamos sombras por defecto del wrapper
-        // --- HOVER EFFECT ---
+        // --- HOVER OFF ---
         "&:hover": {
           backgroundColor: "transparent",
-          // Sin halo gris
-          // Apuntamos al CIRCULO (Thumb)
+          // ANIMACIÓN DE ANILLO (Thumb)
           "& .MuiSwitch-thumb": {
             backgroundColor: colors.main,
-            // El núcleo se vuelve sólido (Main)
-            // INSET: 3px de anillo (RingColor) + Sombra externa suave
+            // Se vuelve sólido
+            // Inset: 3px de anillo + Sombra externa
             boxShadow: `inset 0 0 0 3px ${colors.ringColor}, 0px 2px 4px rgba(0, 0, 0, 0.25)`
           }
         }
@@ -265,26 +263,24 @@ var createSwitchVariant = (colorName, colors) => {
         opacity: 1,
         boxShadow: "0px 1px 2px rgba(0, 0, 0, 0.1)"
       },
-      // ===========================
-      // ESTADO ACTIVO (ON)
-      // ===========================
+      // =================================================================
+      // 2. ESTADO ACTIVO (ON)
+      // =================================================================
       "& .MuiSwitch-switchBase.Mui-checked": {
         color: colors.main,
         "&:hover": {
           backgroundColor: "transparent",
-          // Hover en estado activo
           "& .MuiSwitch-thumb": {
-            // Anillo + Sombra más profunda
-            boxShadow: `inset 0 0  3px ${colors.ringColor}, 0px 2px 4px rgba(0, 0, 0, 0.25)`
+            //  agregamos el anillo "inset"
+            boxShadow: `inset 0 0 0 3px ${colors.ringColor}, 0px 4px 8px rgba(0, 0, 0, 0.35)`
           }
         },
         // Track Activo
         "& + .MuiSwitch-track": {
           backgroundColor: colors.ringColor,
-          // Usamos el color del anillo para el fondo del track
           border: `1px solid ${colors.main}`,
           opacity: 1,
-          boxShadow: "inset 0px 2px 4px rgba(0, 0, 0, 0.2)"
+          boxShadow: "inset 0px 1px 3px rgba(0, 0, 0, 0.2)"
         }
       }
     }
@@ -346,7 +342,6 @@ var themeOptions = {
         root: {
           borderRadius: borderRadius.md,
           transition: transitionStyles.smooth,
-          // Animación suave en botones también
           padding: `${spacingConstants.min}px ${spacingConstants.md}px`,
           textTransform: "none",
           fontWeight: 500,
@@ -355,7 +350,9 @@ var themeOptions = {
         }
       }
     },
-    // 2. SWITCH 
+    // ----------------------------------------------------
+    // SWITCH CONFIG
+    // ----------------------------------------------------
     MuiSwitch: {
       styleOverrides: {
         root: {
@@ -365,25 +362,29 @@ var themeOptions = {
           display: "flex",
           alignItems: "center",
           overflow: "visible"
+          // sombra no se corte
         },
         switchBase: {
           padding: 0,
           margin: 0,
-          transitionDuration: "600ms",
-          // Movimiento izquierda-derecha
+          transitionDuration: `${animations.duration.standard}ms`,
           transform: "translateX(-2px)",
           "&.Mui-checked": {
             transform: "translateX(16px)",
             color: "#fff"
-            // Fallback color
           }
         },
         thumb: {
           width: 18,
           height: 18,
-          // Sombra por defecto (Sin hover)
           boxShadow: "0px 2px 4px rgba(0,0,0,0.25)",
-          transition: "background-color 0.8s ease, box-shadow 0.8s ease, color 0.8s ease"
+          // ANIMACIÓN SUAVE Y COMPLEJA (Figma Smart Animate)
+          transition: `
+            background-color ${transitionStyles.smooth}, 
+            box-shadow ${transitionStyles.smooth}, 
+            color ${transitionStyles.smooth},
+            transform ${transitionStyles.smooth}
+          `
         },
         track: {
           borderRadius: 12 / 2,
@@ -391,29 +392,32 @@ var themeOptions = {
           opacity: 1,
           backgroundColor: "#fff",
           boxSizing: "border-box",
-          transition: "background-color 0.8s ease, border 0.8s ease, box-shadow 0.8s ease"
+          transition: `background-color ${transitionStyles.smooth}`
         }
       },
       variants: [
-        // GREEN
+        // GREEN -> Ring: GLASS
         createSwitchVariant("green", {
           main: brandColors.green.main,
           light: brandColors.green.light,
           ringColor: brandColors.green.glass,
+          // GREEN usa GLASS          
           thumbInactive: brandColors.green.glass
         }),
-        // PRIMARY
+        // PRIMARY -> Ring: LIGHT
         createSwitchVariant("primary", {
           main: brandColors.primary.main,
           light: brandColors.primary.light,
           ringColor: brandColors.primary.light,
+          // PRIMARY usa LIGHT
           thumbInactive: brandColors.primary.light
         }),
-        // CTA
+        // CTA -> Ring: LIGHT
         createSwitchVariant("cta", {
           main: brandColors.cta.main,
           light: brandColors.cta.light,
           ringColor: brandColors.cta.light,
+          // CTA usa LIGHT       
           thumbInactive: brandColors.cta.light
         })
       ]
@@ -428,7 +432,7 @@ var themeOptions = {
           height: 20,
           width: 20,
           backgroundColor: brandColors.primary.main,
-          transition: "box-shadow 0.3s ease"
+          transition: `box-shadow ${animations.duration.standard}ms ${animations.easing.smart}`
         },
         track: {
           backgroundColor: "#25484D",
