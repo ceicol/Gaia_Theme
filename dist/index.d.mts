@@ -183,6 +183,12 @@ declare module '@mui/material/Button' {
         brown: true;
         link: true;
     }
+    interface ButtonPropsVariantOverrides {
+        'gaia-icon-glass': true;
+        'gaia-icon-outline': true;
+        'gaia-cta-contained': true;
+        'gaia-cta-outlined': true;
+    }
 }
 declare module '@mui/material/IconButton' {
     interface IconButtonPropsColorOverrides {
