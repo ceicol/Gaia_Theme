@@ -235,57 +235,6 @@ var transitionStyles = {
 };
 
 // src/theme.ts
-var createSwitchVariant = (colorName, colors) => {
-  return {
-    props: { color: colorName },
-    style: {
-      // =================================================================
-      // 1. ESTADO INACTIVO (OFF)
-      // =================================================================
-      "& .MuiSwitch-switchBase": {
-        color: colors.thumbInactive,
-        boxShadow: "none",
-        // --- HOVER OFF ---
-        "&:hover": {
-          backgroundColor: "transparent",
-          // ANIMACIÓN DE ANILLO (Thumb)
-          "& .MuiSwitch-thumb": {
-            backgroundColor: colors.main,
-            // Se vuelve sólido
-            // Inset: 3px de anillo + Sombra externa
-            boxShadow: `inset 0 0 0 3px ${colors.ringColor}, 0px 2px 4px rgba(0, 0, 0, 0.25)`
-          }
-        }
-      },
-      "& .MuiSwitch-track": {
-        backgroundColor: brandColors.background.main,
-        border: `1px solid ${colors.main}`,
-        opacity: 1,
-        boxShadow: "0px 1px 2px rgba(0, 0, 0, 0.1)"
-      },
-      // =================================================================
-      // 2. ESTADO ACTIVO (ON)
-      // =================================================================
-      "& .MuiSwitch-switchBase.Mui-checked": {
-        color: colors.main,
-        "&:hover": {
-          backgroundColor: "transparent",
-          "& .MuiSwitch-thumb": {
-            //  agregamos el anillo "inset"
-            boxShadow: `inset 0 0 0 3px ${colors.ringColor}, 0px 4px 8px rgba(0, 0, 0, 0.35)`
-          }
-        },
-        // Track Activo
-        "& + .MuiSwitch-track": {
-          backgroundColor: colors.ringColor,
-          border: `1px solid ${colors.main}`,
-          opacity: 1,
-          boxShadow: "inset 0px 1px 3px rgba(0, 0, 0, 0.2)"
-        }
-      }
-    }
-  };
-};
 var themeOptions = {
   palette: {
     primary: {
@@ -361,13 +310,12 @@ var themeOptions = {
           textTransform: "none",
           fontWeight: 500,
           fontSize: "18px",
-          fontFamily: "'Barlow Condensed', sans-serif"
+          fontFamily: "'Barlow Condensed', sans-serif",
+          lineHeight: 1
         }
       },
       variants: [
-        // =============================================
         // BOTÓN 1: Icon Glass (Redondo 36px)
-        // =============================================
         {
           props: { variant: "gaia-icon-glass" },
           style: {
@@ -377,28 +325,21 @@ var themeOptions = {
             height: "36px",
             padding: "8px",
             backgroundColor: brandColors.background.light,
-            // Background Paper
             color: brandColors.primary.main,
-            // Default content color
             border: "1px solid transparent",
-            // Prepara el borde para evitar saltos
             "&:hover": {
               boxShadow: shadows.sm,
               backgroundColor: brandColors.background.light
             },
-            // Active State
             "&:active, &.Mui-active": {
               ...glassEffect,
-              // Aplica background glass, backdropFilter, etc.
               color: brandColors.primary.glass,
               borderColor: brandColors.primary.main,
               boxShadow: "none"
             }
           }
         },
-        // =============================================
         // BOTÓN 2: Icon Outline (Redondo 40px)
-        // =============================================
         {
           props: { variant: "gaia-icon-outline" },
           style: {
@@ -408,57 +349,42 @@ var themeOptions = {
             height: "40px",
             padding: "8px",
             backgroundColor: brandColors.background.light,
-            // Background Paper
             color: brandColors.brown.main,
             border: `1px solid ${brandColors.primary.main}`,
             "&:hover": {
               boxShadow: shadows.sm,
               border: "1px solid transparent",
-              // Quita el borde visualmente
               backgroundColor: brandColors.background.light
             },
-            // Active State
             "&:active, &.Mui-active": {
               backgroundColor: brandColors.background.main,
-              // Background Default
               color: brandColors.brown.light,
               border: "none",
-              // Sin borde
               boxShadow: "none"
             }
           }
         },
-        // =============================================
-        // BOTÓN 3: CTA Contained (Rectangular)
-        // =============================================
+        // BOTÓN 3: CTA Contained
         {
           props: { variant: "gaia-cta-contained" },
           style: {
             borderRadius: borderRadius.md,
-            // Spacing: Min (8px) vertical, Md (24px) horizontal
             padding: `${spacingConstants.min} ${spacingConstants.md}`,
             border: "none",
             backgroundColor: brandColors.cta.main,
             color: brandColors.text.light,
-            // Text Secondary
             "&:hover": {
               boxShadow: shadows.sm,
               backgroundColor: brandColors.cta.main,
-              // Mantiene color base + sombra
               filter: "brightness(1.05)"
-              // Pequeño brillo extra opcional
             },
-            // Active State
             "&:active, &.Mui-active": {
               backgroundColor: brandColors.cta.light,
               boxShadow: "inset 0px 2px 4px rgba(0,0,0,0.1)"
-              // Feedback de presión
             }
           }
         },
-        // =============================================
-        // BOTÓN 4: CTA Outlined (Rectangular)
-        // =============================================
+        // BOTÓN 4: CTA Outlined
         {
           props: { variant: "gaia-cta-outlined" },
           style: {
@@ -466,95 +392,19 @@ var themeOptions = {
             padding: `${spacingConstants.min} ${spacingConstants.md}`,
             border: `1px solid ${brandColors.cta.main}`,
             backgroundColor: brandColors.background.main,
-            // Background Default
             color: brandColors.text.dark,
-            // Text Primary
             "&:hover": {
               boxShadow: shadows.sm,
               backgroundColor: brandColors.background.main,
               border: `1px solid ${brandColors.cta.main}`
             },
-            // Active State
             "&:active, &.Mui-active": {
               backgroundColor: brandColors.background.light,
-              // Background Paper
               color: brandColors.brown.light,
               borderColor: brandColors.cta.main
             }
           }
         }
-      ]
-    },
-    // ----------------------------------------------------
-    // SWITCH CONFIG
-    // ----------------------------------------------------
-    MuiSwitch: {
-      styleOverrides: {
-        root: {
-          width: 32,
-          height: 18,
-          padding: 0,
-          display: "flex",
-          alignItems: "center",
-          overflow: "visible"
-          // sombra no se corte
-        },
-        switchBase: {
-          padding: 0,
-          margin: 0,
-          transitionDuration: `${animations.duration.standard}ms`,
-          transform: "translateX(-2px)",
-          "&.Mui-checked": {
-            transform: "translateX(16px)",
-            color: "#fff"
-          }
-        },
-        thumb: {
-          width: 18,
-          height: 18,
-          boxShadow: "0px 2px 4px rgba(0,0,0,0.25)",
-          // ANIMACIÓN SUAVE Y COMPLEJA (Figma Smart Animate)
-          transition: `
-            background-color ${animations.duration.complex}ms ${animations.easing.smart}, 
-            box-shadow ${animations.duration.complex}ms ${animations.easing.smart}, 
-            color ${animations.duration.complex}ms ${animations.easing.smart},
-            transform ${animations.duration.complex}ms ${animations.easing.smart}
-          `
-        },
-        track: {
-          borderRadius: 12 / 2,
-          height: 12,
-          opacity: 1,
-          backgroundColor: "#fff",
-          boxSizing: "border-box",
-          transition: `background-color ${animations.duration.complex}ms ${animations.easing.smart}`
-        }
-      },
-      variants: [
-        // GREEN -> Ring: GLASS
-        createSwitchVariant("green", {
-          main: brandColors.green.main,
-          light: brandColors.green.light,
-          ringColor: brandColors.green.glass,
-          // GREEN usa GLASS          
-          thumbInactive: brandColors.green.glass
-        }),
-        // PRIMARY -> Ring: LIGHT
-        createSwitchVariant("primary", {
-          main: brandColors.primary.main,
-          light: brandColors.primary.light,
-          ringColor: brandColors.primary.light,
-          // PRIMARY usa LIGHT
-          thumbInactive: brandColors.primary.light
-        }),
-        // CTA -> Ring: LIGHT
-        createSwitchVariant("cta", {
-          main: brandColors.cta.main,
-          light: brandColors.cta.light,
-          ringColor: brandColors.cta.light,
-          // CTA usa LIGHT       
-          thumbInactive: brandColors.cta.light
-        })
       ]
     },
     MuiSlider: {
