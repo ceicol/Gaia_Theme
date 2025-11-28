@@ -6,6 +6,107 @@ import { typography } from './tokens/typography';
 import { customShadowsArray, glassEffect, shadows } from './tokens/shadows';
 import { borderRadius, spacingConstants } from './tokens/layout';
 import { transitionStyles, animations } from './tokens/animations'; // Importamos animations
+import { ButtonProps } from '@mui/material';
+
+
+// HELPER PARA LOS BOTONES DE MAPA (Radial + Etiqueta Hover)
+const createMapButtonVariant = (
+  
+  variantName: ButtonProps['variant'], 
+  config: {
+    gradient: { center: string; edge: string };
+    hover: { labelBg: string };
+    active: { border: string; background: string };
+  }
+) => {
+  return {
+    props: { variant: variantName },
+    style: {
+      // --- BASE (Círculo) ---
+      width: '50px',
+      height: '50px',
+      minWidth: '50px', 
+      borderRadius: borderRadius.pill,
+      padding: spacingConstants.min,
+      
+      // Gradiente Radial 
+      background: `radial-gradient(
+      54.15% 54.15% at 46% 46%,
+      ${config.gradient.center} 76.92%,
+      ${config.gradient.edge} 100%
+      )`,
+      border: '1px solid transparent', 
+      boxShadow: 'none',
+      color: 'text.primary', 
+      overflow: 'visible', 
+
+      // --- HOVER ---
+      '&:hover': {
+        boxShadow: shadows.sm,
+        // Mantiene el gradiente radial
+        background: `radial-gradient(
+        54.15% 54.15% at 46% 46%,
+        ${config.gradient.center} 76.92%,
+        ${config.gradient.edge} 100%
+      )`,
+        border: '1px solid transparent',
+
+        // 1. ETIQUETA DE TEXTO (Tooltip lateral)
+        '&::after': {
+          content: 'attr(data-label)', // Usa la prop data-label="" del HTML
+          position: 'absolute',
+          left: 'calc(100% + 12px)', // Posición a la derecha
+          top: '50%',
+          transform: 'translateY(-50%)',
+          maxWidth: '110px',
+          
+          backgroundColor: config.hover.labelBg,
+          color: brandColors.text.light, // text.secondary
+          
+          padding: '6px 12px',
+          borderRadius: borderRadius.sm,
+          whiteSpace: 'nowrap',
+          fontSize: '14px', // Ajuste visual acorde a Figma
+          fontWeight: 500,
+          boxShadow: shadows.sm,
+          zIndex: 10,
+          opacity: 1,
+          pointerEvents: 'none', // Para que no interfiera con el mouse
+        },
+
+        // 2. FLECHITA DEL TOOLTIP (Triángulo)
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          left: 'calc(100% + 2px)', 
+          top: '50%',
+          transform: 'translateY(-50%)',
+          borderTop: '6px solid transparent',
+          borderBottom: '6px solid transparent',
+          borderRight: `10px solid ${config.hover.labelBg}`,
+          opacity: 1,
+          zIndex: 10,
+        }
+      },
+
+      // Animación de entrada para el tooltip
+      '&::after, &::before': {
+        opacity: 0,
+        transition: `opacity ${animations.duration.standard}ms ${animations.easing.smart}`,
+      },
+
+      // --- ACTIVE (Click / Selected) ---
+      '&:active, &.Mui-active': {
+        background: config.active.background,
+        borderColor: config.active.border,
+        boxShadow: 'none',
+        
+        // Ocultamos el tooltip al hacer click si se desea, o lo dejamos:
+        '&::after, &::before': { opacity: 0 } 
+      }
+    }
+  };
+};
 
 // --- HELPER PARA GENERAR SWITCHES CUSTOM ---
 type SwitchColorProp = SwitchProps['color']; 
@@ -253,6 +354,35 @@ const themeOptions: ThemeOptions = {
             },
           },
         },
+        // 1. PANAMAZONIA (Verde Claro)
+        createMapButtonVariant('gaia-panamazonia', {
+          gradient: { center: '#6EB468', edge: '#5DA257' }, // Extraído del screenshot
+          hover: { labelBg: brandColors.green.light },
+          active: { 
+            border: brandColors.green.light, 
+            background: brandColors.green.glass 
+          }
+        }),
+
+        // 2. AMAZONIA (Verde Oscuro / Primary)
+        createMapButtonVariant('gaia-amazonia', {
+          gradient: { center: '#44937A', edge: '#496C65' }, // Extraído del screenshot
+          hover: { labelBg: brandColors.primary.main },
+          active: { 
+            border: brandColors.primary.main, 
+            background: brandColors.primary.glass 
+          }
+        }),
+
+        // 3. MACROTERRITORIO (Dorado / CTA)
+        createMapButtonVariant('gaia-macroterritorio', {
+          gradient: { center: '#CE8D2A', edge: '#A4772F' }, // Extraído del screenshot
+          hover: { labelBg: brandColors.cta.main },
+          active: { 
+            border: brandColors.cta.main, 
+            background: brandColors.cta.light // Pedido explícito: cta.light (no glass)
+          }
+        }),
       ],
     },
 
