@@ -212,67 +212,95 @@ var createMapButtonVariant = (variantName, config) => {
       minWidth: "50px",
       borderRadius: borderRadius.pill,
       padding: spacingConstants.min,
+      position: "relative",
+      overflow: "visible",
       // Gradiente Radial 
       background: `radial-gradient(
-      54.15% 54.15% at 46% 46%,
-      ${config.gradient.center} 76.92%,
-      ${config.gradient.edge} 100%
-      )`,
-      border: "1px solid transparent",
-      boxShadow: "none",
-      color: "text.primary",
-      overflow: "visible",
-      // --- HOVER ---
-      "&:hover": {
-        boxShadow: shadows.sm,
-        // Mantiene el gradiente radial
-        background: `radial-gradient(
         54.15% 54.15% at 46% 46%,
         ${config.gradient.center} 76.92%,
         ${config.gradient.edge} 100%
       )`,
-        border: "1px solid transparent",
-        // 1. ETIQUETA DE TEXTO (Tooltip lateral)
-        "&::after": {
-          content: "attr(data-label)",
-          // Usa la prop data-label="" del HTML
-          position: "absolute",
-          right: "-103.406px",
-          top: "-16.203px",
-          transform: "none",
-          maxWidth: "110px",
-          backgroundColor: config.hover.labelBg,
-          color: brandColors.text.light,
-          // text.secondary
-          padding: "6px 12px",
-          borderRadius: borderRadius.sm,
-          borderBottomLeftRadius: 0,
-          whiteSpace: "normal",
-          // PERMITE SALTO DE LÍNEA
-          overflowWrap: "break-word",
-          fontFamily: "'Barlow Condensed', sans-serif",
-          fontSize: "18px",
-          fontWeight: 500,
-          textAlign: "start",
-          boxShadow: shadows.sm,
-          zIndex: 10,
-          opacity: 1,
-          pointerEvents: "none"
-          // Para que no interfiera con el mouse
-        }
-      },
-      // Animación de entrada para el tooltip
-      "&::after, &::before": {
+      border: "1px solid transparent",
+      boxShadow: "none",
+      color: "text.primary",
+      // =========================================================
+      // 1. DEFINICIÓN BASE DE LOS PSEUDO-ELEMENTOS (Invisible)
+      // =========================================================
+      "&::after": {
+        content: "attr(data-label)",
+        position: "absolute",
+        right: "-103.406px",
+        top: "0",
+        maxWidth: "110px",
+        backgroundColor: config.hover.labelBg,
+        color: brandColors.text.light,
+        padding: "6px 12px",
+        borderRadius: borderRadius.sm,
+        borderBottomLeftRadius: 0,
+        whiteSpace: "normal",
+        overflowWrap: "break-word",
+        textAlign: "start",
+        pointerEvents: "none",
+        fontFamily: "'Barlow Condensed', sans-serif",
+        fontSize: "18px",
+        fontWeight: 500,
+        boxShadow: shadows.sm,
+        zIndex: 10,
+        // ANIMACIÓN
         opacity: 0,
-        transition: `opacity ${animations.duration.standard}ms ${animations.easing.smart}`
+        transform: "translateY(-100%) translateX(-10px)",
+        transition: `
+          opacity ${animations.duration.standard}ms ${animations.easing.smart},
+          transform ${animations.duration.standard}ms ${animations.easing.smart}
+        `
+      },
+      "&::before": {
+        content: '""',
+        position: "absolute",
+        right: "-6px",
+        top: "6px",
+        borderTop: "6px solid transparent",
+        borderBottom: "6px solid transparent",
+        borderRight: `10px solid ${config.hover.labelBg}`,
+        zIndex: 10,
+        pointerEvents: "none",
+        // ANIMACIÓN
+        opacity: 0,
+        transform: "translateY(-100%) translateX(-10px)",
+        transition: `
+          opacity ${animations.duration.standard}ms ${animations.easing.smart},
+          transform ${animations.duration.standard}ms ${animations.easing.smart}
+        `
+      },
+      // =========================================================
+      // 2. ESTADO HOVER (Visible)
+      // =========================================================
+      "&:hover": {
+        boxShadow: shadows.sm,
+        background: `radial-gradient(
+          54.15% 54.15% at 46% 46%,
+          ${config.gradient.center} 76.92%,
+          ${config.gradient.edge} 100%
+        )`,
+        border: "1px solid transparent",
+        "&::after": {
+          opacity: 1,
+          transform: "translateY(-100%) translateX(0)"
+        },
+        "&::before": {
+          opacity: 1,
+          transform: "translateY(-100%) translateX(0)"
+        }
       },
       // --- ACTIVE (Click / Selected) ---
       "&:active, &.Mui-active": {
         background: config.active.background,
         borderColor: config.active.border,
         boxShadow: "none",
-        // Ocultamos el tooltip al hacer click si se desea, o lo dejamos:
-        "&::after, &::before": { opacity: 0 }
+        "&::after, &::before": {
+          opacity: 0,
+          transform: "translateY(-100%) translateX(-5px)"
+        }
       }
     }
   };
