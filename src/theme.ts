@@ -19,14 +19,14 @@ const createSwitchVariant = ( colorName: SwitchColorProp,
       // --- ESTADO INACTIVO (OFF) ---
       '& .MuiSwitch-switchBase': {
         color: colors.thumbInactive, // Circulo inactivo
-        boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.2)', 
+        boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.25)', 
         '&:hover': { backgroundColor: `${colors.main}15` }, 
       },
       '& .MuiSwitch-track': {
-        backgroundColor: '#FFFFFF', // Track blanco
-        border: `1px solid ${colors.main}`, // Borde color Main
+        backgroundColor: brandColors.background.main, // Track blanco
+        border: `2px solid ${colors.main}`, // Borde color Main
         opacity: 1, // MUI por defecto le baja la opacidad, la forzamos a 1
-        boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.1)', 
+        boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.25)', 
       },
 
       // --- ESTADO ACTIVO (ON) ---
@@ -37,9 +37,9 @@ const createSwitchVariant = ( colorName: SwitchColorProp,
         // El track cuando está activo
         '& + .MuiSwitch-track': {
           backgroundColor: colors.glass || colors.light, // Track activo (Glass o Light)
-          border: 'none', // Quitamos el borde en estado activo para que se vea limpio
+           border: `2px solid ${colors.main}`, 
           opacity: 1,
-          boxShadow: 'inset 0px 2px 4px rgba(0, 0, 0, 0.1)', 
+          boxShadow: 'inset 0px 2px 4px rgba(0, 0, 0, 0.33)', 
         },
       },
     },
@@ -142,7 +142,7 @@ const themeOptions: ThemeOptions = {
           transform: 'translateX(-2px)', 
           '&.Mui-checked': {
             transform: 'translateX(16px)',
-            color: '#fff',
+            color: brandColors.background.main,
           },
         },
         thumb: {
@@ -154,7 +154,7 @@ const themeOptions: ThemeOptions = {
           borderRadius: 12 / 2,
           height: 12,
           opacity: 1,
-          backgroundColor: '#fff',
+          backgroundColor: brandColors.background.main,
           boxSizing: 'border-box',
         },
       },
