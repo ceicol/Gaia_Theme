@@ -243,7 +243,7 @@ const themeOptions: ThemeOptions = {
             '&:hover': {
               boxShadow: shadows.sm,
               backgroundColor: brandColors.background.main,
-              border: `1px solid ${brandColors.cta.main}`,
+              border: 'none',
             },
             '&:active, &.Mui-active': {
               backgroundColor: brandColors.background.light,
