@@ -256,6 +256,81 @@ const themeOptions: ThemeOptions = {
       ],
     },
 
+    // ----------------------------------------------------
+    // SWITCH CONFIG
+    // ----------------------------------------------------
+    MuiSwitch: {
+      styleOverrides: {
+        root: {
+          width: 32,
+          height: 18,
+          padding: 0,
+          display: 'flex',
+          alignItems: 'center',
+          overflow: 'visible', // sombra no se corte
+        },
+        switchBase: {
+          padding: 0,
+          margin: 0,
+          
+          transitionDuration: `${animations.duration.standard}ms`, 
+          transform: 'translateX(-2px)', 
+          '&.Mui-checked': {
+            transform: 'translateX(16px)',
+            color: '#fff', 
+          },
+        },
+        thumb: {
+          width: 18,
+          height: 18,
+          boxShadow: '0px 2px 4px rgba(0,0,0,0.25)', 
+          
+          // ANIMACIÓN SUAVE Y COMPLEJA (Figma Smart Animate)
+          
+          transition: `
+            background-color ${animations.duration.complex}ms ${animations.easing.smart}, 
+            box-shadow ${animations.duration.complex}ms ${animations.easing.smart}, 
+            color ${animations.duration.complex}ms ${animations.easing.smart},
+            transform ${animations.duration.complex}ms ${animations.easing.smart}
+          `,
+        },
+        track: {
+          borderRadius: 12 / 2,
+          height: 12,
+          opacity: 1,
+          backgroundColor: '#fff',
+          boxSizing: 'border-box',
+          transition: `background-color ${animations.duration.complex}ms ${animations.easing.smart}`,
+        },
+      },
+      
+      variants: [
+        // GREEN -> Ring: GLASS
+        createSwitchVariant('green', {
+          main: brandColors.green.main,
+          light: brandColors.green.light,
+          ringColor: brandColors.green.glass, // GREEN usa GLASS          
+          thumbInactive: brandColors.green.glass,
+        }),
+
+        // PRIMARY -> Ring: LIGHT
+        createSwitchVariant('primary', {
+          main: brandColors.primary.main,
+          light: brandColors.primary.light,
+          ringColor: brandColors.primary.light, // PRIMARY usa LIGHT
+          thumbInactive: brandColors.primary.light,
+        }),
+
+        // CTA -> Ring: LIGHT
+        createSwitchVariant('cta', {
+          main: brandColors.cta.main,
+          light: brandColors.cta.light,
+          ringColor: brandColors.cta.light, // CTA usa LIGHT       
+          thumbInactive: brandColors.cta.light,
+        }),
+      ],
+    },
+
 
     MuiSlider: {
       styleOverrides: {
