@@ -3,7 +3,7 @@ import { createTheme, ThemeOptions, responsiveFontSizes, Shadows } from '@mui/ma
 import { SwitchProps } from '@mui/material/Switch';
 import { brandColors } from './tokens/colors';
 import { typography } from './tokens/typography';
-import { customShadowsArray, shadows } from './tokens/shadows';
+import { customShadowsArray, glassEffect, shadows } from './tokens/shadows';
 import { borderRadius, spacingConstants } from './tokens/layout';
 import { transitionStyles, animations } from './tokens/animations'; // Importamos animations
 
@@ -135,20 +135,143 @@ const themeOptions: ThemeOptions = {
   effectShadows: shadows,
 
   components: {
-    MuiButton: {
+    // -----------------------------------------------------------------
+    // 1. TOOLTIP GLOBAL (Requisito: Fondo Primary, Texto Secondary)
+    // -----------------------------------------------------------------
+    MuiTooltip: {
       styleOverrides: {
-        root: {
-          borderRadius: borderRadius.md,
-          transition: transitionStyles.smooth, 
-          padding: `${spacingConstants.min}px ${spacingConstants.md}px`,
-          textTransform: 'none',
-          fontWeight: 500,
-          fontSize: '18px',
-          fontFamily: "'Barlow Condensed', sans-serif",
+        tooltip: {
+          backgroundColor: brandColors.primary.main,
+          color: brandColors.text.light, // Text Secondary (Light)
+          fontSize: '0.75rem',
+          borderRadius: borderRadius.sm,
+        },
+        arrow: {
+          color: brandColors.primary.main,
         },
       },
     },
 
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          
+          transition: `all ${animations.duration.standard}ms ${animations.easing.smart}`,
+          textTransform: 'none',
+          fontWeight: 500,
+          fontSize: '18px',
+          fontFamily: "'Barlow Condensed', sans-serif",
+         },
+      },
+      variants: [
+        // =============================================
+        // BOTÓN 1: Icon Glass (Redondo 36px)
+        // =============================================
+        {
+          props: { variant: 'gaia-icon-glass' },
+          style: {
+            borderRadius: '50%',
+            minWidth: '36px', width: '36px', height: '36px',
+            padding: '8px',
+            backgroundColor: brandColors.background.light, // Background Paper
+            color: brandColors.primary.main, // Default content color
+            border: '1px solid transparent', // Prepara el borde para evitar saltos
+
+            '&:hover': {
+              boxShadow: shadows.sm,
+              backgroundColor: brandColors.background.light,
+            },
+            // Active State
+            '&:active, &.Mui-active': {
+              ...glassEffect, // Aplica background glass, backdropFilter, etc.
+              color: brandColors.primary.glass,
+              borderColor: brandColors.primary.main,
+              boxShadow: 'none',
+            },
+          },
+        },
+
+        // =============================================
+        // BOTÓN 2: Icon Outline (Redondo 40px)
+        // =============================================
+        {
+          props: { variant: 'gaia-icon-outline' },
+          style: {
+            borderRadius: '50%',
+            minWidth: '40px', width: '40px', height: '40px',
+            padding: '8px',
+            backgroundColor: brandColors.background.light, // Background Paper
+            color: brandColors.brown.main,
+            border: `1px solid ${brandColors.primary.main}`,
+
+            '&:hover': {
+              boxShadow: shadows.sm,
+              border: '1px solid transparent', // Quita el borde visualmente
+              backgroundColor: brandColors.background.light,
+            },
+            // Active State
+            '&:active, &.Mui-active': {
+              backgroundColor: brandColors.background.main, // Background Default
+              color: brandColors.brown.light,
+              border: 'none', // Sin borde
+              boxShadow: 'none',
+            },
+          },
+        },
+
+        // =============================================
+        // BOTÓN 3: CTA Contained (Rectangular)
+        // =============================================
+        {
+          props: { variant: 'gaia-cta-contained' },
+          style: {
+            borderRadius: borderRadius.md,
+            // Spacing: Min (8px) vertical, Md (24px) horizontal
+            padding: `${spacingConstants.min} ${spacingConstants.md}`,
+            border: 'none',
+            backgroundColor: brandColors.cta.main,
+            color: brandColors.text.light, // Text Secondary
+            
+            '&:hover': {
+              boxShadow: shadows.sm,
+              backgroundColor: brandColors.cta.main, // Mantiene color base + sombra
+              filter: 'brightness(1.05)', // Pequeño brillo extra opcional
+            },
+            // Active State
+            '&:active, &.Mui-active': {
+              backgroundColor: brandColors.cta.light,
+              boxShadow: 'inset 0px 2px 4px rgba(0,0,0,0.1)', // Feedback de presión
+            },
+          },
+        },
+
+        // =============================================
+        // BOTÓN 4: CTA Outlined (Rectangular)
+        // =============================================
+        {
+          props: { variant: 'gaia-cta-outlined' },
+          style: {
+            borderRadius: borderRadius.md,
+            padding: `${spacingConstants.min} ${spacingConstants.md}`,
+            border: `1px solid ${brandColors.cta.main}`,
+            backgroundColor: brandColors.background.main, // Background Default
+            color: brandColors.text.dark, // Text Primary
+
+            '&:hover': {
+              boxShadow: shadows.sm,
+              backgroundColor: brandColors.background.main,
+              border: `1px solid ${brandColors.cta.main}`,
+            },
+            // Active State
+            '&:active, &.Mui-active': {
+              backgroundColor: brandColors.background.light, // Background Paper
+              color: brandColors.brown.light,
+              borderColor: brandColors.cta.main, 
+            },
+          },
+        },
+      ],
+    },
     // ----------------------------------------------------
     // SWITCH CONFIG
     // ----------------------------------------------------
