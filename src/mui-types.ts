@@ -169,5 +169,140 @@ declare module '@mui/material/Button' {
   }
 }
 
+declare module '@mui/material/IconButton' {
+  interface IconButtonPropsColorOverrides {
+    tertiary: true; 
+    cta: true; 
+    green: true; 
+    brown: true; 
+    link: true;
+  }
+}
+declare module '@mui/material/Fab' {
+  interface FabPropsColorOverrides {
+    tertiary: true; 
+    cta: true; 
+    green: true; 
+    brown: true; 
+    link: true;
+  }
+}
+declare module '@mui/material/ButtonGroup' {
+  interface ButtonGroupPropsColorOverrides {
+    tertiary: true; 
+    cta: true; 
+    green: true; 
+    brown: true; 
+    link: true;
+  }
+  
+}
+declare module '@mui/material/ToggleButton' {
+  interface ToggleButtonPropsColorOverrides {
+    tertiary: true; 
+    cta: true; 
+    green: true; 
+    brown: true; 
+    link: true;
+  }
+}
+
+
+declare module '@mui/material/Chip' {
+  interface ChipPropsColorOverrides {
+    tertiary: true; 
+    cta: true; 
+    green: true; 
+    brown: true; 
+    link: true;
+  }
+}
+declare module '@mui/material/Badge' {
+  interface BadgePropsColorOverrides {
+    tertiary: true; 
+    cta: true; 
+    green: true; 
+    brown: true; 
+    link: true;
+  }
+}
+declare module '@mui/material/AppBar' {
+  interface AppBarPropsColorOverrides {
+    tertiary: true; 
+    cta: true; 
+    green: true; 
+    brown: true; 
+    link: true;
+  }
+}
+declare module '@mui/material/Icon' {
+  interface IconPropsColorOverrides {
+    tertiary: true; 
+    cta: true; 
+    green: true; 
+    brown: true; 
+    link: true;
+  }
+}
+declare module '@mui/material/SvgIcon' {
+  interface SvgIconPropsColorOverrides {
+    tertiary: true; 
+    cta: true; 
+    green: true; 
+    brown: true; 
+    link: true;
+  }
+}
+
+// --- Feedback / Progreso ---
+declare module '@mui/material/CircularProgress' {
+  interface CircularProgressPropsColorOverrides {
+    tertiary: true; 
+    cta: true; 
+    green: true; 
+    brown: true; 
+    link: true;
+  }
+}
+declare module '@mui/material/LinearProgress' {
+  interface LinearProgressPropsColorOverrides {
+    tertiary: true; 
+    cta: true; 
+    green: true; 
+    brown: true; 
+    link: true;
+  }
+}
+
+// --- Inputs / Controles ---
+declare module '@mui/material/Checkbox' {
+  interface CheckboxPropsColorOverrides {
+    tertiary: true; 
+    cta: true; 
+    green: true; 
+    brown: true; 
+    link: true;
+  }
+}
+declare module '@mui/material/Radio' {
+  interface RadioPropsColorOverrides {
+    tertiary: true; 
+    cta: true; 
+    green: true; 
+    brown: true; 
+    link: true;
+  }
+}
+declare module '@mui/material/Switch' {
+  interface SwitchPropsColorOverrides {
+    tertiary: true; 
+    cta: true; 
+    green: true; 
+    brown: true; 
+    link: true;
+  }
+}
+
+
 
 export {};

@@ -27,7 +27,7 @@ export const brandColors = {
     button : '#357761',
 
   },
-  blue: {
+  link: {
     main: '#005bb0', // links
   }
 
