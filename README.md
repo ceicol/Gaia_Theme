@@ -225,6 +225,36 @@ import { transitionStyles } from 'theme-gaia';
 
 ---
 
+---
+
+### 6. Botones Estandarizados (Variants)
+
+El tema incluye 4 variantes de botones prediseñadas para casos de uso específicos (Iconos y CTAs).
+
+| Variante | Uso | Apariencia |
+| :--- | :--- | :--- |
+| **`gaia-icon-glass`** | Iconos de acción | Circular, fondo claro. **Active:** Efecto Glass + Borde Primary. |
+| **`gaia-icon-outline`** | Iconos secundarios | Circular, borde Primary. **Active:** Fondo sólido, texto claro. |
+| **`gaia-cta-contained`**| Acción Principal | Rectangular, fondo Gold. **Active:** Sombra interna (Inset). |
+| **`gaia-cta-outlined`** | Acción Secundaria | Rectangular, borde Gold. **Active:** Fondo claro + Borde. |
+
+**Ejemplo de uso:**
+
+```tsx
+// Botón Circular con Icono (Glass)
+<Tooltip title="Descargar">
+  <Button variant="gaia-icon-glass">
+    <DownloadIcon />
+  </Button>
+</Tooltip>
+
+// Botón de Llamada a la Acción (CTA)
+<Button variant="gaia-cta-contained">
+  Comenzar Ahora
+</Button>
+
+---
+
 ## 🛠 Solución de Problemas
 
 **Los cambios no se reflejan:**

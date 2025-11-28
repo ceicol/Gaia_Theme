@@ -58,7 +58,7 @@ const createSwitchVariant = (
         
         '&:hover': { 
           backgroundColor: 'transparent',
-          transition: `all ${animations.duration.standard}ms ${animations.easing.smart}`,
+          
           
           '& .MuiSwitch-thumb': {
              //  agregamos el anillo "inset"
@@ -285,7 +285,6 @@ const themeOptions: ThemeOptions = {
           boxShadow: '0px 2px 4px rgba(0,0,0,0.25)', 
           
           // ANIMACIÓN SUAVE Y COMPLEJA (Figma Smart Animate)
-          
           transition: `
             background-color ${animations.duration.complex}ms ${animations.easing.smart}, 
             box-shadow ${animations.duration.complex}ms ${animations.easing.smart}, 
