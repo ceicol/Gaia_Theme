@@ -282,7 +282,7 @@ const themeOptions: ThemeOptions = {
         thumb: {
           width: 18,
           height: 18,
-          boxShadow: '0px 2px 4px rgba(0,0,0,0.25)', 
+          boxShadow: 'inset 0 0 0 0px transparent, 0px 2px 4px rgba(0,0,0,0.25)', 
           
           // ANIMACIÓN SUAVE Y COMPLEJA (Figma Smart Animate)
           transition: `
