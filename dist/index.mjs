@@ -213,7 +213,7 @@ var createSwitchVariant = (colorName, colors) => {
         color: colors.thumbInactive,
         boxShadow: "none",
         // Quitamos sombras por defecto del wrapper
-        // --- HOVER EFFECT (Aquí ocurre la magia) ---
+        // --- HOVER EFFECT ---
         "&:hover": {
           backgroundColor: "transparent",
           // Sin halo gris
@@ -242,7 +242,7 @@ var createSwitchVariant = (colorName, colors) => {
           // Hover en estado activo
           "& .MuiSwitch-thumb": {
             // Anillo + Sombra más profunda
-            boxShadow: `inset 0 0 0 3px ${colors.ringColor}, 0px 4px 8px rgba(0, 0, 0, 0.35)`
+            boxShadow: `inset 0 0  3px ${colors.ringColor}, 0px 4px 8px rgba(0, 0, 0, 0.35)`
           }
         },
         // Track Activo
@@ -251,7 +251,7 @@ var createSwitchVariant = (colorName, colors) => {
           // Usamos el color del anillo para el fondo del track
           border: `1px solid ${colors.main}`,
           opacity: 1,
-          boxShadow: "inset 0px 1px 3px rgba(0, 0, 0, 0.2)"
+          boxShadow: "inset 0px 2px 4px rgba(0, 0, 0, 0.2)"
         }
       }
     }
@@ -336,7 +336,7 @@ var themeOptions = {
         switchBase: {
           padding: 0,
           margin: 0,
-          transitionDuration: "300ms",
+          transitionDuration: "600ms",
           // Movimiento izquierda-derecha
           transform: "translateX(-2px)",
           "&.Mui-checked": {
@@ -350,9 +350,7 @@ var themeOptions = {
           height: 18,
           // Sombra por defecto (Sin hover)
           boxShadow: "0px 2px 4px rgba(0,0,0,0.25)",
-          // --- AQUÍ ESTÁ LA ANIMACIÓN SUAVE DEL EFECTO DE COLOR ---
-          // Animamos background, shadow y color para que el "inset" aparezca suavemente
-          transition: "background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease"
+          transition: "background-color 0.8s ease, box-shadow 0.8s ease, color 0.8s ease"
         },
         track: {
           borderRadius: 12 / 2,
@@ -360,7 +358,7 @@ var themeOptions = {
           opacity: 1,
           backgroundColor: "#fff",
           boxSizing: "border-box",
-          transition: "background-color 0.3s ease, border 0.3s ease, box-shadow 0.3s ease"
+          transition: "background-color 0.8s ease, border 0.8s ease, box-shadow 0.8s ease"
         }
       },
       variants: [
