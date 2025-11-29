@@ -59,7 +59,7 @@ const createMapButtonVariant = (
         position: 'absolute' as const,
         
         left: '100%', 
-        marginLeft: '12px',
+        marginLeft: '0',
         top: '0',
         width: 'max-content',
         maxWidth: '160px',
