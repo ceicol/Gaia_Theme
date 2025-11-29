@@ -225,8 +225,6 @@ import { transitionStyles } from 'theme-gaia';
 
 ---
 
----
-
 ### 6. Botones Estandarizados (Variants)
 
 El tema incluye 4 variantes de botones prediseñadas para casos de uso específicos (Iconos y CTAs).
@@ -252,6 +250,57 @@ El tema incluye 4 variantes de botones prediseñadas para casos de uso específi
 <Button variant="gaia-cta-contained">
   Comenzar Ahora
 </Button>
+```
+
+---
+
+### 7. Botones de Mapa 
+
+Botones circulares especializados para la navegación o selección de regiones en mapas. Tienen un fondo con gradiente radial, un estado activo sólido y una etiqueta flotante (tooltip) integrada que aparece suavemente al hacer hover.
+
+| Variante | Tema de Color | Estado Active |
+| :--- | :--- | :--- |
+| **`gaia-panamazonia`** | Gradiente Verde Claro | Borde + Fondo green.light |
+| **`gaia-amazonia`** | Gradiente Primary (Oscuro) | Borde primary.main + Fondo primary.light |
+| **`gaia-macroterritorio`** | Gradiente Dorado (CTA) | Borde cta.main + Fondo cta.light |
+
+#### Cómo usarlos
+
+Estos botones requieren la propiedad `data-label` para generar la etiqueta de texto flotante.
+
+**Características automáticas:**
+
+- **Iconos:** Cualquier SVG o Icono dentro del botón se pintará automáticamente de color claro (text.light).
+- **Etiqueta:** El texto en `data-label` se auto-balancea (text-wrap: balance) para evitar palabras huérfanas y crece hacia la derecha sin desplazar el botón.
+
+```tsx
+import { Button } from '@mui/material';
+import { PanamazoniaIcon, JaguarIcon } from './icons'; // Tus iconos
+
+// 1. Panamazonia
+<Button 
+  variant="gaia-panamazonia" 
+  data-label="Panamazonia"
+>
+  <PanamazoniaIcon />
+</Button>
+
+// 2. Amazonia (Con texto largo)
+<Button 
+  variant="gaia-amazonia" 
+  data-label="Amazonia colombiana"
+>
+  <AmazoniaIcon />
+</Button>
+
+// 3. Macroterritorio
+<Button 
+  variant="gaia-macroterritorio" 
+  data-label="Macroterritorio Jaguares de Yuruparí"
+>
+  <JaguarIcon />
+</Button>
+```
 
 ---
 
