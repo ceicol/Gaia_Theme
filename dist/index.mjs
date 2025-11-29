@@ -222,22 +222,33 @@ var createMapButtonVariant = (variantName, config) => {
       )`,
       border: "1px solid transparent",
       boxShadow: "none",
-      color: "text.secondary",
+      color: brandColors.text.light,
+      "& .MuiSvgIcon-root, & svg": {
+        color: "inherit",
+        // Hereda el color del padre (brandColors.text.light)
+        fill: "currentColor",
+        // Asegura que el relleno use ese color
+        width: "100%",
+        // Opcional: Asegura que el icono llene el espacio si es necesario
+        height: "100%"
+      },
       // =========================================================
       // 1. DEFINICIÓN BASE DE LOS PSEUDO-ELEMENTOS (Invisible)
       // =========================================================
       "&::after": {
         content: "attr(data-label)",
         position: "absolute",
-        right: "-103.406px",
+        left: "100%",
+        marginLeft: "12px",
         top: "0",
+        width: "max-content",
         maxWidth: "160px",
         backgroundColor: config.hover.labelBg,
         color: brandColors.text.light,
         padding: "6px 12px",
         borderRadius: borderRadius.sm,
         borderBottomLeftRadius: 0,
-        whiteSpace: "normal",
+        textWrap: "balance",
         overflowWrap: "break-word",
         textAlign: "start",
         pointerEvents: "none",
@@ -257,7 +268,8 @@ var createMapButtonVariant = (variantName, config) => {
       "&::before": {
         content: '""',
         position: "absolute",
-        right: "-6px",
+        left: "100%",
+        marginLeft: "2px",
         top: "6px",
         borderTop: "6px solid transparent",
         borderBottom: "6px solid transparent",
