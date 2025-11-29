@@ -255,7 +255,7 @@ var createMapButtonVariant = (variantName, config) => {
       )`,
       border: "1px solid transparent",
       boxShadow: "none",
-      color: "text.primary",
+      color: "text.secondary",
       // =========================================================
       // 1. DEFINICIÓN BASE DE LOS PSEUDO-ELEMENTOS (Invisible)
       // =========================================================
@@ -264,7 +264,7 @@ var createMapButtonVariant = (variantName, config) => {
         position: "absolute",
         right: "-103.406px",
         top: "0",
-        maxWidth: "110px",
+        maxWidth: "160px",
         backgroundColor: config.hover.labelBg,
         color: brandColors.text.light,
         padding: "6px 12px",
@@ -276,7 +276,7 @@ var createMapButtonVariant = (variantName, config) => {
         pointerEvents: "none",
         fontFamily: "'Barlow Condensed', sans-serif",
         fontSize: "18px",
-        fontWeight: 500,
+        fontWeight: 400,
         boxShadow: shadows.sm,
         zIndex: 10,
         // ANIMACIÓN
