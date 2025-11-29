@@ -239,7 +239,7 @@ var createMapButtonVariant = (variantName, config) => {
         content: "attr(data-label)",
         position: "absolute",
         left: "100%",
-        marginLeft: "12px",
+        marginLeft: "0",
         top: "0",
         width: "max-content",
         maxWidth: "160px",
