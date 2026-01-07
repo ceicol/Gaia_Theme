@@ -54,7 +54,10 @@ var brandColors = {
 
 // src/utils/fluidTypography.ts
 var fluid = (maxPx, minPx) => {
-  const minSize = minPx || Math.round(maxPx * 0.7);
+  const minSize = Math.max(
+    minPx != null ? minPx : Math.round(maxPx * 0.7),
+    16
+  );
   const minWidth = 375;
   const maxWidth = 1440;
   const root = 16;
