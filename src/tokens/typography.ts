@@ -33,7 +33,7 @@ const header = (weight: number, size: number, lineHeight: number | string = 1.2)
  * Genera estilo para Cuerpo (Raleway)
  * @param weight - Peso
  * @param size - Tamaño en px
- * @param lineHeight - (Opcional) Si Figma dice "Auto", no lo pongas. Si dice "38.2", ponlo.
+ * @param lineHeight - (Opcional) 
  */
 const text = (weight: number, size: number, lineHeight?: number | string) => ({
   fontFamily: FONT_BODY,
