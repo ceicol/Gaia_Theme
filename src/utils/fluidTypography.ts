@@ -8,7 +8,10 @@
  * @returns string ej: "clamp(1.75rem, 1.5rem + 1.2vw, 2.5rem)"
  */
 export const fluid = (maxPx: number, minPx?: number) => {
-  const minSize = minPx || Math.round(maxPx * 0.7); // Por defecto reduce al 70% en móvil
+  const minSize = Math.max(
+    minPx ?? Math.round(maxPx * 0.7),
+    16 
+  ) // Por defecto reduce al 70% en móvil
   
   // Configuraciones de Viewport (Ancho de pantalla)
   const minWidth = 375;  // Móvil estándar
