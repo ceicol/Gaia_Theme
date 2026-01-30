@@ -22,11 +22,19 @@ const WEIGHTS = {
  * @param size - Tamaño en px (se convertirá a clamp)
  * @param lineHeight - (Opcional) Altura de línea
  */
-const header = (weight: number, size: number, lineHeight: number | string = 1.2) => ({
+const headerH1 = (weight: number, size: number, lineHeight: number | string = 1.2) => ({
   fontFamily: FONT_HEADER,
   fontWeight: weight,
-  fontSize: fluid(size), // Aplica clamp automático
-  lineHeight: lineHeight,
+  fontSize: fluid(size, undefined, 4),
+  lineHeight,
+});
+
+// Para H2/H3: mínimo +8px
+const headerH2H3 = (weight: number, size: number, lineHeight: number | string = 1.2) => ({
+  fontFamily: FONT_HEADER,
+  fontWeight: weight,
+  fontSize: fluid(size, undefined, 8),
+  lineHeight,
 });
 
 /**
@@ -53,27 +61,26 @@ export const typography: ThemeOptions ['typography'] = {
   // ==========================================
 
   // H1 Group
-  h1xxlBold: header(WEIGHTS.bold, 64, 1.1),
-  h1xlBold:  header(WEIGHTS.bold, 52),
-  h1lgBold:  header(WEIGHTS.bold, 40),
-  h1Bold:    header(WEIGHTS.bold, 36),
+  h1xxlBold: headerH1(WEIGHTS.bold, 64, 1.1),
+  h1xlBold:  headerH1(WEIGHTS.bold, 52),
+  h1lgBold:  headerH1(WEIGHTS.bold, 40),
+  h1Bold:    headerH1(WEIGHTS.bold, 36),
 
   // H2 Group (Aquí solucionamos tu problema de repetición)
   // Misma función, diferente peso.
-  h2xxlSemibold: header(WEIGHTS.semibold, 32),
-  h2xxlMedium:    header(WEIGHTS.medium, 32), 
-  h2lgMedium:    header(WEIGHTS.medium, 28),
-  h2Bold:        header(WEIGHTS.bold, 28),   
+  h2xxlSemibold: headerH2H3(WEIGHTS.semibold, 32),
+  h2xxlMedium:    headerH2H3(WEIGHTS.medium, 32), 
+  h2lgMedium:    headerH2H3(WEIGHTS.medium, 28),
+  h2Bold:        headerH2H3(WEIGHTS.bold, 28),   
 
   // H3 Group
-  h3xxlSemibold: header(WEIGHTS.semibold, 28),
-  h3xlRegular:   header(WEIGHTS.regular, 24),
-  h3xlSemibold:  header(WEIGHTS.semibold, 24), 
-  h3xlMedium:    header(WEIGHTS.medium, 24),   
+  h3xxlSemibold: headerH2H3(WEIGHTS.semibold, 28),
+  h3xlRegular:   headerH2H3(WEIGHTS.regular, 24),
+  h3xlSemibold:  headerH2H3(WEIGHTS.semibold, 24), 
+  h3xlMedium:    headerH2H3(WEIGHTS.medium, 24),   
   
-  h3lgSemibold:  header(WEIGHTS.semibold, 20, '26px'), // Line-height específico
-  h3Medium:      header(WEIGHTS.medium, 18),
-
+  h3lgSemibold:  headerH2H3(WEIGHTS.semibold, 20, '26px'), // Line-height específico
+  h3Medium:      headerH2H3(WEIGHTS.medium, 18),
   // ==========================================
   // BODY (Texts)
   // ==========================================
