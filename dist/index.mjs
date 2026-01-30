@@ -53,11 +53,9 @@ var brandColors = {
 };
 
 // src/utils/fluidTypography.ts
-var fluid = (maxPx, minPx) => {
-  const minSize = Math.max(
-    minPx != null ? minPx : Math.round(maxPx * 0.7),
-    16
-  );
+var fluid = (maxPx, minPx, minOffset = 0) => {
+  const baseMin = minPx != null ? minPx : Math.round(maxPx * 0.7);
+  const minSize = Math.max(baseMin + minOffset, 16);
   const minWidth = 375;
   const maxWidth = 1440;
   const root = 16;
@@ -66,7 +64,7 @@ var fluid = (maxPx, minPx) => {
   const minRem = `${(minSize / root).toFixed(4)}rem`;
   const maxRem = `${(maxPx / root).toFixed(4)}rem`;
   const preferred = `${(yAxisIntersection / root).toFixed(4)}rem + ${(slope * 100).toFixed(4)}vw`;
-  return `clamp(${minRem}, ${preferred}, ${maxRem})`;
+  return `clamp(${minRem}, ${preferred}, ${(maxPx / root).toFixed(4)}rem)`;
 };
 
 // src/tokens/typography.ts
@@ -78,11 +76,16 @@ var WEIGHTS = {
   semibold: 600,
   bold: 700
 };
-var header = (weight, size, lineHeight = 1.2) => ({
+var headerH1 = (weight, size, lineHeight = 1.2) => ({
   fontFamily: FONT_HEADER,
   fontWeight: weight,
-  fontSize: fluid(size),
-  // Aplica clamp automático
+  fontSize: fluid(size, void 0, 4),
+  lineHeight
+});
+var headerH2H3 = (weight, size, lineHeight = 1.2) => ({
+  fontFamily: FONT_HEADER,
+  fontWeight: weight,
+  fontSize: fluid(size, void 0, 8),
   lineHeight
 });
 var text = (weight, size, lineHeight) => ({
@@ -99,24 +102,24 @@ var typography = {
   // HEADERS (H1 - H3)
   // ==========================================
   // H1 Group
-  h1xxlBold: header(WEIGHTS.bold, 64, 1.1),
-  h1xlBold: header(WEIGHTS.bold, 52),
-  h1lgBold: header(WEIGHTS.bold, 40),
-  h1Bold: header(WEIGHTS.bold, 36),
+  h1xxlBold: headerH1(WEIGHTS.bold, 64, 1.1),
+  h1xlBold: headerH1(WEIGHTS.bold, 52),
+  h1lgBold: headerH1(WEIGHTS.bold, 40),
+  h1Bold: headerH1(WEIGHTS.bold, 36),
   // H2 Group (Aquí solucionamos tu problema de repetición)
   // Misma función, diferente peso.
-  h2xxlSemibold: header(WEIGHTS.semibold, 32),
-  h2xxlMedium: header(WEIGHTS.medium, 32),
-  h2lgMedium: header(WEIGHTS.medium, 28),
-  h2Bold: header(WEIGHTS.bold, 28),
+  h2xxlSemibold: headerH2H3(WEIGHTS.semibold, 32),
+  h2xxlMedium: headerH2H3(WEIGHTS.medium, 32),
+  h2lgMedium: headerH2H3(WEIGHTS.medium, 28),
+  h2Bold: headerH2H3(WEIGHTS.bold, 28),
   // H3 Group
-  h3xxlSemibold: header(WEIGHTS.semibold, 28),
-  h3xlRegular: header(WEIGHTS.regular, 24),
-  h3xlSemibold: header(WEIGHTS.semibold, 24),
-  h3xlMedium: header(WEIGHTS.medium, 24),
-  h3lgSemibold: header(WEIGHTS.semibold, 20, "26px"),
+  h3xxlSemibold: headerH2H3(WEIGHTS.semibold, 28),
+  h3xlRegular: headerH2H3(WEIGHTS.regular, 24),
+  h3xlSemibold: headerH2H3(WEIGHTS.semibold, 24),
+  h3xlMedium: headerH2H3(WEIGHTS.medium, 24),
+  h3lgSemibold: headerH2H3(WEIGHTS.semibold, 20, "26px"),
   // Line-height específico
-  h3Medium: header(WEIGHTS.medium, 18),
+  h3Medium: headerH2H3(WEIGHTS.medium, 18),
   // ==========================================
   // BODY (Texts)
   // ==========================================
