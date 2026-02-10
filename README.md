@@ -40,6 +40,8 @@ Las tipografías se cargan vía **Google Fonts** para garantizar consistencia vi
 
 Debes incluir el siguiente bloque en el `<head>` de tu `index.html`:
 
+```tsx
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -47,6 +49,7 @@ Debes incluir el siguiente bloque en el `<head>` de tu `index.html`:
   rel="stylesheet"
 />
 
+```
 
 📌 Sin este paso, el theme no se verá correctamente.
 
