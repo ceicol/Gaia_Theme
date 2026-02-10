@@ -40,13 +40,14 @@ Las tipografías se cargan vía **Google Fonts** para garantizar consistencia vi
 
 Debes incluir el siguiente bloque en el `<head>` de tu `index.html`:
 
+```tsx
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
   href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100..900;1,100..900&family=Barlow+Condensed:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
   rel="stylesheet"
 />
-
+```
 
 📌 Sin este paso, el theme no se verá correctamente.
 
