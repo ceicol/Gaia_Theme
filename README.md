@@ -28,8 +28,27 @@ npm install git+https://github.com/ceicol/Gaia_Theme.git#build --force
 El sistema depende de las fuentes **Raleway** y **Barlow Condensed** y de las librerías base de MUI. Asegúrate de tenerlas:
 
 ```bash
-npm install @mui/material @emotion/react @emotion/styled @fontsource/raleway @fontsource/barlow-condensed
+npm install @mui/material @emotion/react @emotion/styled 
 ```
+
+---
+
+### Tipografías (Requerido)
+
+El sistema Gaia **no instala fuentes por NPM**.  
+Las tipografías se cargan vía **Google Fonts** para garantizar consistencia visual entre proyectos.
+
+Debes incluir el siguiente bloque en el `<head>` de tu `index.html`:
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+  href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100..900;1,100..900&family=Barlow+Condensed:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+  rel="stylesheet"
+/>
+
+
+📌 Sin este paso, el theme no se verá correctamente.
 
 ---
 
@@ -42,16 +61,6 @@ import React from 'react';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import { AppTheme } from 'theme-gaia';
 
-// Importación de estilos de fuentes
-import '@fontsource/raleway/300.css';
-import '@fontsource/raleway/400.css';
-import '@fontsource/raleway/500.css';
-import '@fontsource/raleway/600.css';
-import '@fontsource/raleway/700.css';
-import '@fontsource/barlow-condensed/400.css'; 
-import '@fontsource/barlow-condensed/500.css'; 
-import '@fontsource/barlow-condensed/600.css';
-import '@fontsource/barlow-condensed/700.css';
 
 const App = () => {
   return (
