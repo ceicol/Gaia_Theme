@@ -25,7 +25,7 @@ npm install git+https://github.com/ceicol/Gaia_Theme.git#build --force
 
 ### Instalar dependencias Peer (Obligatorio)
 
-El sistema depende de las fuentes **Raleway** y **Barlow Condensed** y de las librerías base de MUI. Asegúrate de tenerlas:
+El sistema depende de las librerías base de MUI. Asegúrate de tenerlas:
 
 ```bash
 npm install @mui/material @emotion/react @emotion/styled 
